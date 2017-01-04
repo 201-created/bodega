@@ -2,12 +2,16 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import testSelector from 'bodega/tests/helpers/ember-test-selectors';
+import startMirage from 'bodega/tests/helpers/setup-mirage-for-integration';
+import wait from 'ember-test-helpers/wait';
+
 import Ember from 'ember';
 const { Object: emberObject } = Ember;
 
 moduleForComponent('apple-pay-button', 'Integration | Component | apple pay button', {
   integration: true,
   beforeEach() {
+    this.server = startMirage(this.container);
     this._oldStripe = window.Stripe;
 
     window.Stripe = {
@@ -18,10 +22,13 @@ moduleForComponent('apple-pay-button', 'Integration | Component | apple pay butt
       }
     };
 
-    this.item = emberObject.create({ price: 11.99 });
+    this.item = emberObject.create({ price: 1199 });
+
+    this.server.post('https://localhost.ssl:3000/api/charges', { success: true });
   },
   afterEach() {
     window.Stripe = this._oldStripe;
+    this.server.shutdown();
   }
 });
 
@@ -36,7 +43,7 @@ test('it renders', function(assert) {
 });
 
 test('clicking invokes Apple Pay', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
 
   window.Stripe.applePay.buildSession = function(request, success) {
     assert.equal(request.total.amount, '11.99', 'price off item sent to Stripe');
@@ -56,8 +63,11 @@ test('clicking invokes Apple Pay', function(assert) {
   };
 
   this.render(hbs`{{apple-pay-button item=item}}`);
-
   this.$('button').click();
+
+  return wait().then(() => {
+    assert.ok(this.$(testSelector('success')).length, 'success message');
+  });
 });
 
 test('displays Apple Pay errors', function(assert) {

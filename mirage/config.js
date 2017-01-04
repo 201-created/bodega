@@ -1,5 +1,7 @@
+import config from 'bodega/config/environment';
+
 export default function() {
-  this.namespace = 'api';
+  this.namespace = `/${config.apiNamespace}`;
   this.get('/items');
 
   this.passthrough('https://api.stripe.com/**');

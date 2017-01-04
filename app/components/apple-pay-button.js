@@ -2,7 +2,7 @@
 import Ember from 'ember';
 import $ from 'jquery';
 
-const { Component, computed, inject } = Ember;
+const { Component, /* computed, */ inject, run } = Ember;
 
 export default Component.extend({
   stripe: inject.service(),
@@ -12,6 +12,7 @@ export default Component.extend({
   // for now (to simplify visual testing on non-apple-pay platforms)
   isAvailable: true, // computed.readOnly('applePay.isAvailable'),
   errorMessage: null,
+  successMessage: null,
 
   init() {
     this._super(...arguments);
@@ -20,11 +21,15 @@ export default Component.extend({
 
   actions: {
     beginApplePay() {
-      this.set('errorMessage', null);
+      this.setProperties({
+        errorMessage: null,
+        successMessage: null
+      });
+
       let item = this.get('item');
       let price = item.get('price');
       let paymentRequest = {
-        requiredShippingContactFields: ['emailAddress'],
+        requiredShippingContactFields: ['email', 'postalAddress'],
         countryCode: 'US',
         currencyCode: 'USD',
         total: {
@@ -33,25 +38,31 @@ export default Component.extend({
         }
       };
 
-
       let session = Stripe.applePay.buildSession(paymentRequest, (result, completion) => {
-        completion(ApplePaySession.STATUS_SUCCESS);
-
         let payload = {
+          shippingContact: result.shippingContact,
           token: result.token.id,
           price
         };
 
         // TODO configure
         $.post('https://localhost.ssl:3000/api/charges', payload).done(() => {
-          completion(ApplePaySession.STATUS_SUCCESS);
-          // You can now redirect the user to a receipt page, etc.
-          window.location.href = '/success.html';
+          if (this.get('isDestroyed')) { return; }
+          run(() => {
+            this.set('successMessage', 'Purchase is on its way');
+            completion(ApplePaySession.STATUS_SUCCESS);
+
+          });
         }).fail(() => {
-          completion(ApplePaySession.STATUS_FAILURE);
+          if (this.get('isDestroyed')) { return; }
+          run(() => {
+            this.set('errorMessage', 'Purchase failed');
+            completion(ApplePaySession.STATUS_FAILURE);
+          });
         });
 
       }, (error) => {
+        if (this.get('isDestroyed')) { return; }
         this.set('errorMessage', error.message);
       });
 

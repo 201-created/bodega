@@ -5,7 +5,7 @@ export default Factory.extend({
   url() {
     return `http://lorempixel.com/400/200/abstract/${this.name}`;
   },
-  price(i) {
+  price() {
     return 199;
   }
 });

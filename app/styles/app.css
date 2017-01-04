@@ -14,3 +14,8 @@
 .apple-pay-button.is-available {
   display: block;
 }
+
+.apple-pay-button__success {
+  border: 2px solid green;
+  color: green;
+}

@@ -4,4 +4,10 @@
   </div>
 {{/if}}
 
+{{#if successMessage}}
+  <div class='apple-pay-button__success' data-test-success={{successMessage}}>
+    {{successMessage}}
+  </div>
+{{/if}}
+
 <button {{action 'beginApplePay'}} class="apple-pay-button {{if isAvailable "is-available"}}"></button>
