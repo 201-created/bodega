@@ -1,5 +1,7 @@
 /* global Stripe, ApplePaySession */
 import Ember from 'ember';
+import $ from 'jquery';
+
 const { Component, computed, inject } = Ember;
 
 export default Component.extend({
@@ -29,13 +31,14 @@ export default Component.extend({
       let session = Stripe.applePay.buildSession(paymentRequest, (result, completion) => {
         completion(ApplePaySession.STATUS_SUCCESS);
 
-        // $.post('/charges', { token: result.token.id }).done(() => {
-        //   completion(ApplePaySession.STATUS_SUCCESS);
-        //   // You can now redirect the user to a receipt page, etc.
-        //   window.location.href = '/success.html';
-        // }).fail(() => {
-        //   completion(ApplePaySession.STATUS_FAILURE);
-        // });
+        // TODO configure
+        $.post('https://localhost.ssl:3000/api/charges', { token: result.token.id }).done(() => {
+          completion(ApplePaySession.STATUS_SUCCESS);
+          // You can now redirect the user to a receipt page, etc.
+          window.location.href = '/success.html';
+        }).fail(() => {
+          completion(ApplePaySession.STATUS_FAILURE);
+        });
 
       }, (error) => {
         this.set('errorMessage', error.message);

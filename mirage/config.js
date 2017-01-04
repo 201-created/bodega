@@ -3,6 +3,7 @@ export default function() {
   this.get('/items');
 
   this.passthrough('https://api.stripe.com/**');
+  this.passthrough('https://localhost.ssl:3000/**');
 
   // These comments are here to help you get started. Feel free to delete them.
 
