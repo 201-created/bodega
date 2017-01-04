@@ -11,7 +11,7 @@
 ## Running / Development
 
 * `ember serve`
-* Visit your app at [https://localhost.ssl:4200](https://localhost.ssl:4200).
+* Visit your app **using Safari** at [https://localhost.ssl:4200](https://localhost.ssl:4200).
 
 ### Code Generators
 
