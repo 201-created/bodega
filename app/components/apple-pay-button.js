@@ -16,13 +16,13 @@ export default Component.extend({
   actions: {
     beginApplePay() {
       this.set('errorMessage', null);
-
+      let item = this.get('item');
       let paymentRequest = {
         countryCode: 'US',
         currencyCode: 'USD',
         total: {
           label: 'Stripe.com',
-          amount: '19.99'
+          amount: item.get('price') + ''
         }
       };
 

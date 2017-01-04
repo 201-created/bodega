@@ -1,9 +1,10 @@
 <div class="show-item" data-test-item={{item.id}}>
   <div class="show-item__name">{{item.name}}</div>
+  <span class="show-item__price" data-test-price={{item.price}}>{{item.price}}</span>
   <div class="show-item__image">
     <img src={{item.url}}>
   </div>
   <div class="show-item__pay">
-    {{apple-pay-button}}
+    {{apple-pay-button item=item}}
   </div>
 </div>
