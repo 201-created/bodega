@@ -6,6 +6,6 @@ export default Factory.extend({
     return `http://lorempixel.com/400/200/abstract/${this.name}`;
   },
   price(i) {
-    return (10 + i + 1) * 100 + 99;
+    return 199;
   }
 });
