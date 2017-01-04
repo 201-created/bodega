@@ -15,6 +15,8 @@ export default Component.extend({
 
   actions: {
     beginApplePay() {
+      this.set('errorMessage', null);
+
       let paymentRequest = {
         countryCode: 'US',
         currencyCode: 'USD',

@@ -1,1 +1,7 @@
+{{#if errorMessage}}
+  <div class='apple-pay-button__error' data-test-error={{errorMessage}}>
+    {{errorMessage}}
+  </div>
+{{/if}}
+
 <button {{action 'beginApplePay'}} class="apple-pay-button {{if isAvailable "is-available"}}"></button>
