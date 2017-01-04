@@ -44,7 +44,11 @@ test('clicking invokes Apple Pay', function(assert) {
       assert.equal(status, ApplePaySession.STATUS_SUCCESS, 'completion called with success');
     };
 
-    success(null, completion);
+    success({
+      token: {
+        id: 123
+      }
+    }, completion);
 
     return {
       begin() { return this; }

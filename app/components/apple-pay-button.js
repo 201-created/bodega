@@ -19,20 +19,26 @@ export default Component.extend({
     beginApplePay() {
       this.set('errorMessage', null);
       let item = this.get('item');
+      let price = item.get('price');
       let paymentRequest = {
         countryCode: 'US',
         currencyCode: 'USD',
         total: {
           label: 'Stripe.com',
-          amount: item.get('price') + ''
+          amount:  price / 100 + ''
         }
       };
 
       let session = Stripe.applePay.buildSession(paymentRequest, (result, completion) => {
         completion(ApplePaySession.STATUS_SUCCESS);
 
+        let payload = {
+          token: result.token.id,
+          price
+        };
+
         // TODO configure
-        $.post('https://localhost.ssl:3000/api/charges', { token: result.token.id }).done(() => {
+        $.post('https://localhost.ssl:3000/api/charges', payload).done(() => {
           completion(ApplePaySession.STATUS_SUCCESS);
           // You can now redirect the user to a receipt page, etc.
           window.location.href = '/success.html';

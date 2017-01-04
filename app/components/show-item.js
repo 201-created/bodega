@@ -1,4 +1,7 @@
 import Ember from 'ember';
-
-export default Ember.Component.extend({
+const { Component, computed } = Ember;
+export default Component.extend({
+  priceInDollars: computed('item.price', function() {
+    return this.get('item.price') / 100;
+  })
 });

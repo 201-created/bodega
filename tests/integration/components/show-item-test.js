@@ -11,11 +11,11 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  let item = {id: 1, name: 'my item', url: '/dummy-image', price: 10.99};
+  let item = {id: 1, name: 'my item', url: '/dummy-image', price: 1099};
   this.set('item', item);
   this.render(hbs`{{show-item item=item}}`);
 
   assert.ok(this.$(testSelector('item', item.id)).length, 'displays item');
-  assert.ok(this.$(testSelector('price', item.price)).length, 'displays price');
+  assert.ok(this.$(testSelector('price', item.price / 100)).length, 'displays price');
   assert.ok(this.$(`img[src="${item.url}"]`).length, 'shows image');
 });
