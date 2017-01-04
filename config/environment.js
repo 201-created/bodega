@@ -18,7 +18,10 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    apiNamespace: 'api'
+    apiNamespace: 'api',
+    stripe: {
+      publishableKey: 'pk_test_SrD06JdAhT0DZvBEK8SZ9aiB'
+    }
   };
 
   if (environment === 'development') {
@@ -38,6 +41,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.stripe.publishableKey = 'pk_test_SrD06JdAhT0DZvBEK8SZ9aiB';
   }
 
   if (environment === 'production') {

@@ -40,6 +40,7 @@
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-test-selectors": "0.0.5",
+    "ember-stripe-service": "^4.4.2",
     "loader.js": "^4.0.1"
   }
 }
