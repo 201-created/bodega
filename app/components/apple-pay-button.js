@@ -1,20 +1,16 @@
 /* global Stripe, ApplePaySession */
 import Ember from 'ember';
-const { Component, inject } = Ember;
+const { Component, computed, inject } = Ember;
 
 export default Component.extend({
   stripe: inject.service(),
-  isAvailable: false,
+  applePay: inject.service(),
+  isAvailable: computed.readOnly('applePay.isAvailable'),
   errorMessage: null,
 
-  didInsertElement() {
+  init() {
     this._super(...arguments);
-
-    if (Stripe && Stripe.applePay) {
-      Stripe.applePay.checkAvailability((result) => {
-        this.set('isAvailable', result);
-      });
-    }
+    this.get('applePay');
   },
 
   actions: {
