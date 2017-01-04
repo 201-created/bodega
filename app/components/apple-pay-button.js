@@ -21,6 +21,7 @@ export default Component.extend({
       let item = this.get('item');
       let price = item.get('price');
       let paymentRequest = {
+        requiredShippingContactFields: ['emailAddress'],
         countryCode: 'US',
         currencyCode: 'USD',
         total: {
@@ -28,6 +29,7 @@ export default Component.extend({
           amount:  price / 100 + ''
         }
       };
+
 
       let session = Stripe.applePay.buildSession(paymentRequest, (result, completion) => {
         completion(ApplePaySession.STATUS_SUCCESS);
