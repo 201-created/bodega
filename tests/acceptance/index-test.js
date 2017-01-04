@@ -1,13 +1,8 @@
-/* global server */
 import { test } from 'qunit';
 import moduleForAcceptance from 'bodega/tests/helpers/module-for-acceptance';
 import testSelector from 'bodega/tests/helpers/ember-test-selectors';
 
-moduleForAcceptance('Acceptance | index', {
-  beforeEach() {
-    this.server = server;
-  }
-});
+moduleForAcceptance('Acceptance | index');
 
 test('visiting /index', function(assert) {
   let items = this.server.createList('item', 5);
