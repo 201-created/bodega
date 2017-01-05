@@ -28,6 +28,12 @@ body {
   margin: 0 auto 5em;
 }
 
+@media only screen and (min-width: 861px) {
+  .show-item__image {
+    height: 230px;
+  }
+}
+
 .show-item__image img {
   display:  block;
   width: 100%;
