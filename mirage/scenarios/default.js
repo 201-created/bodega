@@ -1,8 +1,8 @@
 export default function(server) {
   let stickerData = [
-    {name: 'ghost', url: '/assets/images/seat.png'},
-    {name: 'fingers', url: '/assets/images/fingers.jpg'},
-    {name: 'space', url: '/assets/images/space.jpg'}
+    {name: 'Seat', url: '/assets/images/seat.png'},
+    {name: 'Touch', url: '/assets/images/fingers.png'},
+    {name: 'Space', url: '/assets/images/space.png'}
   ];
 
   stickerData.forEach(({name, url}) => {

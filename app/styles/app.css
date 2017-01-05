@@ -1,3 +1,64 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  background-color: #fffde7;
+  margin: 0;
+  padding: 1px;
+  text-align: center;
+}
+
+.store-title {
+  font-size: 2.5em;
+  background: #e65100;
+  color: #fffde7;
+  margin: 0 0 1em;
+  padding: 1.5em 10px .125em;
+}
+
+@media only screen and (min-width: 861px) {
+  .store-items > .ember-view {
+    display: inline-block;
+    margin: 0 3% 5em;
+    vertical-align: top;
+  }
+}
+
+.show-item {
+  width: 220px;
+  margin: 0 auto 5em;
+}
+
+.show-item__image img {
+  display:  block;
+  width: 100%;
+}
+
+.show-item__details {
+  border: 0.125em;
+  padding: 0.125em;
+  margin: 0 1em;
+  border-radius: .5em;
+}
+
+.show-item__name {
+  float: left;
+  font-size: 1.25em;
+  margin: 0;
+  padding-left: 10px;
+  color: #0097a7;
+}
+
+.show-item__price {
+  float: right;
+  line-height: 1.75;
+  padding-right: 10px;
+  color: #0097a7;
+}
+
+.show-item__pay {
+  clear:  both;
+}
+
 .apple-pay-button {
   display: none;
   background-color: black;
@@ -8,7 +69,8 @@
   width: 100%;
   height: 44px;
   padding: 10px 0;
-  border-radius: 10px;
+  border:  0;
+  border-radius: .5em;
 }
 
 .apple-pay-button.is-available {
