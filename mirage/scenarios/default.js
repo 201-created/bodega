@@ -1,9 +1,8 @@
 export default function(server) {
-  // TODO(Jorge): Update stickers with actual assets
   let stickerData = [
-    {name: 'ghost', url: 'sticker-ghost.png'},
-    {name: 'fingers', url: 'sticker-fingers.png'},
-    {name: 'prince', url: 'sticker-prince.png'}
+    {name: 'Seat', url: '/assets/images/seat.png'},
+    {name: 'Touch', url: '/assets/images/fingers.png'},
+    {name: 'Space', url: '/assets/images/space.png'}
   ];
 
   stickerData.forEach(({name, url}) => {

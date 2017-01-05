@@ -1,3 +1,9 @@
-{{#each model as |item|}}
-  {{show-item item=item}}
-{{/each}}
+<section class='section-store'>
+  <h1 class='section-store__title'>Grab a sticker</h1>
+
+  <div class='section-store__items-container'>
+    {{#each model as |item|}}
+      {{show-item item=item}}
+    {{/each}}
+  </div>
+</section>
