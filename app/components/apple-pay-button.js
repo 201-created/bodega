@@ -1,6 +1,7 @@
 /* global Stripe, ApplePaySession */
 import Ember from 'ember';
 import $ from 'jquery';
+import config from 'bodega/config/environment';
 
 const { Component, /* computed, */ inject, run } = Ember;
 
@@ -45,8 +46,7 @@ export default Component.extend({
           price
         };
 
-        // TODO configure
-        $.post('https://localhost.ssl:3000/api/charges', payload).done(() => {
+        $.post(`${config.apiHost}/api/charges`, payload).done(() => {
           if (this.get('isDestroyed')) { return; }
           run(() => {
             this.set('successMessage', 'Purchase is on its way');
