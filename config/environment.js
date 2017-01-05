@@ -18,6 +18,7 @@ module.exports = function(environment) {
       // when it is created
     },
 
+    apiHost: 'https://localhost.ssl:3000',
     apiNamespace: 'api',
     stripe: {
       publishableKey: 'pk_test_SrD06JdAhT0DZvBEK8SZ9aiB'
@@ -30,6 +31,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
   }
 
   if (environment === 'test') {
