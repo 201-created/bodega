@@ -1,0 +1,27 @@
+<h1>
+  Purchase is on its way.
+</h1>
+
+Expect a confirmation email
+
+<div>
+  Order ID: {{model.id}}
+</div>
+
+<div>
+  Name: {{model.shippingContact.givenName}} {{model.shippingContact.familyName}}
+</div>
+
+<div>
+  Email: {{model.shippingContact.emailAddress}}
+</div>
+
+<div>
+  {{#each model.shippingContact.addressLines as |line|}}
+    {{line}}
+  {{/each}}
+
+  {{model.shippingContact.locality}}, {{model.shippingContact.administrativeArea}} {{model.shippingContact.postaCode}}
+</div>
+
+{{show-item item=model.item showPayButton=false}}

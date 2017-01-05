@@ -1,13 +1,14 @@
 /* global Stripe, ApplePaySession */
 import Ember from 'ember';
 import config from 'bodega/config/environment';
-import fetch from "ember-network/fetch";
 
 const { Component, /* computed, */ inject } = Ember;
 
 export default Component.extend({
   stripe: inject.service(),
   applePay: inject.service(),
+  store: inject.service(),
+  router: inject.service(),
 
   // TODO eventually, use the applePay.isAvailable flag here. Hardcode to true
   // for now (to simplify visual testing on non-apple-pay platforms)
@@ -39,17 +40,22 @@ export default Component.extend({
         }
       };
 
+      let router = this.get('router.router');
       let session = Stripe.applePay.buildSession(paymentRequest, (result, completion) => {
-        let body = JSON.stringify({
+        let store = this.get('store');
+        let charge = store.createRecord('charge', {
           shippingContact: result.shippingContact,
           token: result.token.id,
-          price
+          price,
+          item
         });
 
-        fetch(`${config.apiHost}/api/charges`, { method: 'POST', body }).then(() => {
+        charge.save().then(() => {
           if (this.get('isDestroyed')) { return; }
           this.set('successMessage', 'Purchase is on its way');
           completion(ApplePaySession.STATUS_SUCCESS);
+
+          router.transitionTo('success', charge);
         }).catch(() => {
           if (this.get('isDestroyed')) { return; }
 
