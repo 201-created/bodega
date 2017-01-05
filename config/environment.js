@@ -51,7 +51,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.stripe.publishableKey = 'pk_live_f90QszZOgLBlf3U25ZhPnV0M';
-    ENV.apiHost = 'https://bodega-api.herokuapp.com';
+    ENV.apiHost = 'https://api.shop-201.com';
   }
 
   return ENV;
