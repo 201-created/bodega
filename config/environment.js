@@ -25,10 +25,6 @@ module.exports = function(environment) {
     }
   };
 
-  ENV['ember-cli-mirage'] = {
-    enabled: false
-  };
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -52,6 +48,10 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.stripe.publishableKey = 'pk_live_f90QszZOgLBlf3U25ZhPnV0M';
     ENV.apiHost = 'https://api.shop-201.com';
+
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
   }
 
   return ENV;
