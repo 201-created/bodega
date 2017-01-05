@@ -43,7 +43,11 @@ test('it renders', function(assert) {
 });
 
 test('clicking invokes Apple Pay', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
+
+  this.server.post('/charges', function() {
+    assert.ok(true, 'post to /api/charges');
+  });
 
   window.Stripe.applePay.buildSession = function(request, success) {
     assert.equal(request.total.amount, '11.99', 'price off item sent to Stripe');

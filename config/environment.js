@@ -43,6 +43,7 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.stripe.publishableKey = 'pk_test_SrD06JdAhT0DZvBEK8SZ9aiB';
+    ENV.apiHost = '';
   }
 
   if (environment === 'production') {

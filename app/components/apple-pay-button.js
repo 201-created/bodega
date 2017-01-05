@@ -1,9 +1,9 @@
 /* global Stripe, ApplePaySession */
 import Ember from 'ember';
-import $ from 'jquery';
 import config from 'bodega/config/environment';
+import fetch from "ember-network/fetch";
 
-const { Component, /* computed, */ inject, run } = Ember;
+const { Component, /* computed, */ inject } = Ember;
 
 export default Component.extend({
   stripe: inject.service(),
@@ -40,25 +40,21 @@ export default Component.extend({
       };
 
       let session = Stripe.applePay.buildSession(paymentRequest, (result, completion) => {
-        let payload = {
+        let body = JSON.stringify({
           shippingContact: result.shippingContact,
           token: result.token.id,
           price
-        };
+        });
 
-        $.post(`${config.apiHost}/api/charges`, payload).done(() => {
+        fetch(`${config.apiHost}/api/charges`, { method: 'POST', body }).then(() => {
           if (this.get('isDestroyed')) { return; }
-          run(() => {
-            this.set('successMessage', 'Purchase is on its way');
-            completion(ApplePaySession.STATUS_SUCCESS);
+          this.set('successMessage', 'Purchase is on its way');
+          completion(ApplePaySession.STATUS_SUCCESS);
+        }).catch(() => {
+          if (this.get('isDestroyed')) { return; }
 
-          });
-        }).fail(() => {
-          if (this.get('isDestroyed')) { return; }
-          run(() => {
-            this.set('errorMessage', 'Purchase failed');
-            completion(ApplePaySession.STATUS_FAILURE);
-          });
+          this.set('errorMessage', 'Purchase failed');
+          completion(ApplePaySession.STATUS_FAILURE);
         });
 
       }, (error) => {
