@@ -46,6 +46,10 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.stripe.publishableKey = 'pk_live_f90QszZOgLBlf3U25ZhPnV0M';
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
   }
 
   return ENV;
