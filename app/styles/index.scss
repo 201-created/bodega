@@ -1,0 +1,15 @@
+.section-store__title {
+  font-size: 2.5em;
+  background: #e65100;
+  color: #fffde7;
+  margin: 0 0 1em;
+  padding: 1.5em 10px .125em;
+}
+
+@media only screen and (min-width: 861px) {
+  .section-store__items-container > .ember-view {
+    display: inline-block;
+    margin: 0 3% 5em;
+    vertical-align: top;
+  }
+}
