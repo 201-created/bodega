@@ -7,7 +7,7 @@
 
 * `git clone <repository-url>` this repository
 * `cd bodega`
-* `yard`
+* `yarn`
 * `bower install`
 * Update your `/etc/hosts` to include a line: `127.0.0.1  localhost.ssl`
 
