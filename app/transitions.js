@@ -5,7 +5,7 @@ export default function(){
     this.fromRoute('index'),
     this.toRoute('item'),
     this.use('explode', {
-      matchBy: 'data-test-item',
+      matchBy: 'data-item-id',
       use: ['flyTo', { duration } ]
     }, {
       pick: '.back-button',
@@ -15,7 +15,7 @@ export default function(){
       use: ['toLeft', { duration } ]
     }),
     this.reverse('explode', {
-      matchBy: 'data-test-item',
+      matchBy: 'data-item-id',
       use: ['flyTo', { duration } ]
     }, {
       pick: '.back-button',
