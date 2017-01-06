@@ -1,0 +1,12 @@
+.swipeable-area {
+  width: 500px;
+  height: 400px;
+  overflow-x: scroll;
+  border: 1px solid black;
+  white-space: nowrap;
+}
+
+.swipeable-item {
+  display: inline-block;
+  width: 500px;
+}

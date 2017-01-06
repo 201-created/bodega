@@ -2,8 +2,12 @@
   <h1 class='section-store__title'>Grab a sticker</h1>
 
   <div class='section-store__items-container'>
-    {{#each model as |item|}}
-      {{show-item item=item}}
-    {{/each}}
+    {{#swipeable-area}}
+      {{#each model as |item|}}
+        {{#swipeable-item}}
+          {{show-item item=item}}
+        {{/swipeable-item}}
+      {{/each}}
+    {{/swipeable-area}}
   </div>
 </section>
