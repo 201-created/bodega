@@ -1,6 +1,5 @@
 /* global Stripe, ApplePaySession */
 import Ember from 'ember';
-import config from 'bodega/config/environment';
 
 const { Component, /* computed, */ inject } = Ember;
 
