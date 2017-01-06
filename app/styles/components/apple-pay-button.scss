@@ -11,6 +11,10 @@
   border: 0;
   border-radius: .5em;
   cursor: pointer;
+
+  position: absolute;
+  bottom: 0px;
+
 }
 
 .apple-pay-button.is-available {

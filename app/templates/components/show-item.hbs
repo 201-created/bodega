@@ -5,10 +5,5 @@
   <div class="show-item__details">
     <h1 class="show-item__name">{{item.name}}</h1>
     <span class="show-item__price" data-test-price={{priceInDollars}}>${{priceInDollars}}</span>
-    {{#if showPayButton}}
-      <div class="show-item__pay">
-        {{apple-pay-button item=item}}
-      </div>
-      {{/if}}
   </div>
 </article>
