@@ -19,6 +19,7 @@ export default function(){
       pick: '.back-button',
       use: ['crossFade', { duration }]
     }, {
+      pick: '.section-store__items-container',
       use: ['toLeft', { duration } ]
     }),
     this.reverse('explode', {
@@ -28,6 +29,7 @@ export default function(){
       pick: '.back-button',
       use: ['crossFade', { duration }]
     }, {
+      pick: '.section-store__items-container',
       use: ['toRight', { duration } ]
     })
   );

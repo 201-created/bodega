@@ -2,6 +2,10 @@
   width: 220px;
   margin: 0 auto 5em;
 
+  // have to provide a min-height to make liquid-fire
+  // compute position correctly.
+  min-height: 211px;
+
   &.is-focused {
     width: 300px;
   }
