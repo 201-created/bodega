@@ -6,7 +6,7 @@ import startMirage from 'bodega/tests/helpers/setup-mirage-for-integration';
 import wait from 'ember-test-helpers/wait';
 
 import Ember from 'ember';
-const { Object: emberObject } = Ember;
+const { Service, Object: emberObject } = Ember;
 
 moduleForComponent('apple-pay-button', 'Integration | Component | apple pay button', {
   integration: true,
@@ -43,10 +43,13 @@ test('it renders', function(assert) {
 });
 
 test('clicking invokes Apple Pay', function(assert) {
-  assert.expect(4);
+  assert.expect(5);
 
-  this.server.post('/charges', function() {
+  this.server.post('/charges', function(scema, request) {
     assert.ok(true, 'post to /api/charges');
+    let data = JSON.parse(request.requestBody);
+    data.data.id = '1';
+    return data;
   });
 
   window.Stripe.applePay.buildSession = function(request, success) {
@@ -65,6 +68,15 @@ test('clicking invokes Apple Pay', function(assert) {
       begin() { return this; }
     };
   };
+
+  let RouterStub = Service.extend({
+    router: {
+      transitionTo(route /* , model */) {
+        assert.equal(route, 'success', 'transitioned to success');
+      }
+    }
+  });
+  this.register('service:router', RouterStub);
 
   this.render(hbs`{{apple-pay-button item=item}}`);
   this.$('button').click();

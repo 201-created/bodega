@@ -1,12 +1,4 @@
 export default function(){
-  // this.transition(
-  //   this.fromRoute('index'),
-  //   this.toRoute('item'),
-  //   this.use('crossFade'),
-  //   this.reverse('crossFade')
-  // );
-
-
   var duration = 1000;
 
   this.transition(
@@ -33,4 +25,4 @@ export default function(){
       use: ['toRight', { duration } ]
     })
   );
-};
+}

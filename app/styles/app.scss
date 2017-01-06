@@ -13,7 +13,14 @@ body {
 @import "components/show-item";
 @import "components/apple-pay-button";
 @import "components/back-button";
+@import "components/item-details";
 
 .section-store__items-container {
-  height: 800px;
+  height: 850px;
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
 }
