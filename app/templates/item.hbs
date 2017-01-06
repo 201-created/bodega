@@ -1,5 +1,12 @@
-{{show-item item=model}}
+<section class='section-store'>
+  <h1 class='section-store__title'>Grab a sticker</h1>
 
-{{back-button}}
+  <div class='section-store__items-container'>
 
-{{apple-pay-button item=model}}
+    {{show-item item=model isFocused=true}}
+
+    {{back-button}}
+
+    {{apple-pay-button item=model}}
+  </div>
+</section>

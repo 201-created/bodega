@@ -16,11 +16,17 @@ export default function(){
       matchBy: 'data-test-item',
       use: ['flyTo', { duration } ]
     }, {
+      pick: '.back-button',
+      use: ['crossFade', { duration }]
+    }, {
       use: ['toLeft', { duration } ]
     }),
     this.reverse('explode', {
       matchBy: 'data-test-item',
       use: ['flyTo', { duration } ]
+    }, {
+      pick: '.back-button',
+      use: ['crossFade', { duration }]
     }, {
       use: ['toRight', { duration } ]
     })

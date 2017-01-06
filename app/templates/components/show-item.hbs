@@ -1,4 +1,4 @@
-<article class="show-item" data-test-item={{item.id}}>
+<article class="show-item {{if isFocused 'is-focused'}}" data-test-item={{item.id}}>
   <div class="show-item__image">
     <img src={{item.url}} data-item-id={{item.id}} >
   </div>
