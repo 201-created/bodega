@@ -25,4 +25,11 @@ export default function(){
       use: ['toRight', { duration } ]
     })
   );
+
+  this.transition(
+    this.hasClass('liquid-footer'),
+    this.toValue(true),
+    this.use('toLeft', { duration }),
+    this.reverse('toRight', { duration })
+  );
 }

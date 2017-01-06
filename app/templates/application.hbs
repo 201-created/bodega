@@ -1,1 +1,10 @@
 {{liquid-outlet}}
+
+
+<div class='footer'>
+  {{#liquid-if focusedItem class='liquid-footer'}}
+    {{item-details item=focusedItem}}
+
+    {{apple-pay-button item=focusedItem}}
+  {{/liquid-if}}
+</div>

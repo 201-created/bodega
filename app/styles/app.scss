@@ -20,7 +20,11 @@ body {
 }
 
 .footer {
+  min-height: 75px;
   width: 100%;
   position: absolute;
   bottom: 0px;
+  margin-left: -1px;
+  margin-right: -1px;
+
 }
