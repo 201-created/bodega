@@ -46,7 +46,8 @@ export default Component.extend({
           shippingContact: result.shippingContact,
           token: result.token.id,
           price,
-          item
+          item,
+          description: `201 Created Sticker: ${item.get('name')}`
         });
 
         charge.save().then(() => {
