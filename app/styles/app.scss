@@ -50,6 +50,10 @@ body {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
+  &.no-scroll {
+    overflow-y: hidden;
+  }
+
   overflow-x: hidden;
   top: $headerHeight;
   bottom: $footerHeight;
