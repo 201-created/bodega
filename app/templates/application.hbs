@@ -1,10 +1,34 @@
-{{liquid-outlet}}
+<div class='header'>
+  {{#from-elsewhere name="header" as |header|}}
+    {{#liquid-bind header rules=animationRules as |opts|}}
+      <div class='toolbar-content'>
+        {{#if opts.component}}
+          {{component opts.component}}
+        {{/if}}
 
+        <h1 class='section-store__title'>{{opts.title}}</h1>
+      </div>
+      {{/liquid-bind}}
+  {{/from-elsewhere}}
+</div>
+
+<div class='body'>
+  {{liquid-outlet}}
+</div>
 
 <div class='footer'>
-  {{#liquid-if focusedItem class='liquid-footer'}}
-    {{item-details item=focusedItem}}
 
-    {{apple-pay-button item=focusedItem}}
-  {{/liquid-if}}
+  {{#from-elsewhere name="footer" as |footer|}}
+    {{#liquid-bind footer class='liquid-footer' rules=footerAnimationRules as |component|}}
+      <div class='toolbar-content'>
+        {{#if component}}
+          {{component component}}
+        {{else}}
+          <div class='footer-message'>
+            Stickers by 201 Created
+          </div>
+        {{/if}}
+      </div>
+    {{/liquid-bind}}
+  {{/from-elsewhere}}
 </div>

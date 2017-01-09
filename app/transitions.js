@@ -1,6 +1,6 @@
-export default function(){
-  var duration = 1000;
+export let duration = 400;
 
+export default function(){
   this.transition(
     this.fromRoute('index'),
     this.toRoute('item'),
