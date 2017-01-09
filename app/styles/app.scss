@@ -1,7 +1,12 @@
+$headerHeight: 75px;
+$footerHeight: $headerHeight;
+$orangeColor: #e65100;
+$beigeColor: #fffde7;
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  background-color: #fffde7;
+  background-color: $beigeColor;
   margin: 0;
   padding: 1px;
   text-align: center;
@@ -19,12 +24,39 @@ body {
   // height: 850px;
 }
 
-.footer {
-  min-height: 75px;
+.header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
   width: 100%;
-  position: absolute;
+  height: $headerHeight;
+  background: $orangeColor;
+  color: $beigeColor;
+}
+
+.toolbar-content {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.body {
+  position: fixed;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  top: $headerHeight;
+  bottom: $footerHeight;
+}
+.footer {
+  position: fixed;
+  width: 100%;
+  height: $footerHeight;
   bottom: 0px;
   margin-left: -1px;
   margin-right: -1px;
+}
 
+.footer-message {
+  border-top: 1px solid $orangeColor;
 }

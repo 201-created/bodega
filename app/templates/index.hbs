@@ -1,5 +1,4 @@
 <section class='section-store'>
-  <h1 class='section-store__title'>Grab a sticker</h1>
 
   <div class='section-store__items-container'>
 
@@ -10,3 +9,6 @@
     {{/each}}
   </div>
 </section>
+
+{{to-elsewhere named="header" send=(hash title="Grab a sticker")}}
+{{to-elsewhere named="footer" send=null}}

@@ -1,10 +1,9 @@
 <section class='section-store'>
-  <h1 class='section-store__title'>Grab a sticker</h1>
-
   <div class='section-store__items-container'>
 
     {{show-item item=model isFocused=true}}
-
-    {{back-button}}
   </div>
 </section>
+
+{{to-elsewhere named="header" send=(hash component=(component "back-button") title=model.name)}}
+{{to-elsewhere named="footer" send=(component "item-footer" item=model)}}
