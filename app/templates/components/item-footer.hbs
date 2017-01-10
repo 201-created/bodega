@@ -1,2 +1,10 @@
 {{item-details item=item}}
-{{apple-pay-button item=item}}
+
+<div class="row">
+  <div class="col">
+    {{apple-pay-button item=item}}
+  </div>
+  <div class="col">
+    <button onclick={{action 'addToCart'}} data-test-add-to-cart>Add to cart</button>
+  </div>
+</div>
