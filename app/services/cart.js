@@ -11,7 +11,7 @@ export default Service.extend({
 
   count: computed.reads('items.length'),
 
-  order: computed('items.@each', function() {
+  order: computed('items.[]', function() {
     let count = this.get('count');
 
     let name;
