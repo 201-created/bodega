@@ -11,11 +11,4 @@ export default function(){
       use: ['crossFade', { duration }]
     })
   );
-
-  this.transition(
-    this.hasClass('liquid-footer'),
-    this.toValue(true),
-    this.use('toLeft', { duration }),
-    this.reverse('toRight', { duration })
-  );
 }
