@@ -21,7 +21,14 @@ body {
 @import "components/item-details";
 
 .section-store__items-container {
-  // height: 850px;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  &.no-scroll {
+    overflow-y: hidden;
+  }
 }
 
 .header {
@@ -43,18 +50,6 @@ body {
 .body {
   position: fixed;
   width: 100%;
-
-  // fix momentum scrolling on iPhone
-  // overflow-y has to be scroll, not auto
-  // https://css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements/
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-
-  &.no-scroll {
-    overflow-y: hidden;
-  }
-
-  overflow-x: hidden;
   top: $headerHeight;
   bottom: $footerHeight;
 }
@@ -69,4 +64,9 @@ body {
 
 .footer-message {
   border-top: 1px solid $orangeColor;
+}
+
+.liquid-container, .liquid-child {
+  width: 100%;
+  height: 100%
 }

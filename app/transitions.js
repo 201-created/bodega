@@ -4,25 +4,11 @@ export default function(){
   this.transition(
     this.fromRoute('index'),
     this.toRoute('item'),
-    this.use('explode', {
+    this.useAndReverse('explode', {
       matchBy: 'data-item-id',
       use: ['flyTo', { duration } ]
     }, {
-      pick: '.back-button',
       use: ['crossFade', { duration }]
-    }, {
-      pick: '.section-store__items-container',
-      use: ['toLeft', { duration } ]
-    }),
-    this.reverse('explode', {
-      matchBy: 'data-item-id',
-      use: ['flyTo', { duration } ]
-    }, {
-      pick: '.back-button',
-      use: ['crossFade', { duration }]
-    }, {
-      pick: '.section-store__items-container',
-      use: ['toRight', { duration } ]
     })
   );
 

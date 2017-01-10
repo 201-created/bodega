@@ -1,13 +1,12 @@
 <section class='section-store'>
 
-  <div class='section-store__items-container'>
-
+  {{#memory-scroll class="section-store__items-container" key="index-items"}}
     {{#each model as |item|}}
       {{#link-to 'item' item}}
         {{show-item item=item}}
       {{/link-to}}
     {{/each}}
-  </div>
+  {{/memory-scroll}}
 </section>
 
 {{to-elsewhere named="header" send=(hash title="Grab a sticker")}}
