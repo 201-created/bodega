@@ -1,7 +1,6 @@
-/* global Stripe, ApplePaySession */
 import Ember from 'ember';
 
-const { Component, /* computed, */ inject } = Ember;
+const { Component, /* computed, */ inject, get } = Ember;
 
 export default Component.extend({
   stripe: inject.service(),
@@ -28,7 +27,7 @@ export default Component.extend({
       });
 
       let item = this.get('item');
-      let price = item.get('price');
+      let price = get(item, 'price');
       let paymentRequest = {
         requiredShippingContactFields: ['email', 'postalAddress'],
         countryCode: 'US',
@@ -40,35 +39,32 @@ export default Component.extend({
       };
 
       let router = this.get('router.router');
-      let session = Stripe.applePay.buildSession(paymentRequest, (result, completion) => {
+
+      this.get('applePay').charge(paymentRequest).then(({ result, notify }) => {
         let store = this.get('store');
         let charge = store.createRecord('charge', {
           shippingContact: result.shippingContact,
           token: result.token.id,
           price,
           item,
-          description: `201 Created Sticker: ${item.get('name')}`
+          description: `201 Created Sticker: ${get(item, 'name')}`
         });
 
         charge.save().then(() => {
           if (this.get('isDestroyed')) { return; }
           this.set('successMessage', 'Purchase is on its way');
-          completion(ApplePaySession.STATUS_SUCCESS);
+          notify.success();
 
           router.transitionTo('success', charge);
         }).catch(() => {
           if (this.get('isDestroyed')) { return; }
-
           this.set('errorMessage', 'Purchase failed');
-          completion(ApplePaySession.STATUS_FAILURE);
+          notify.failure();
         });
-
       }, (error) => {
         if (this.get('isDestroyed')) { return; }
         this.set('errorMessage', error.message);
       });
-
-      session.begin();
     }
   }
 });
