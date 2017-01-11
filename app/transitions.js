@@ -1,4 +1,5 @@
-export let duration = 400;
+import config from 'bodega/config/environment';
+const { animationDuration: duration } = config;
 
 export default function(){
   this.transition(

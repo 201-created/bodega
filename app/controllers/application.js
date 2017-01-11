@@ -1,6 +1,7 @@
 import Ember from 'ember';
-import { duration } from 'bodega/transitions';
+import config from 'bodega/config/environment';
 const { Controller, inject } = Ember;
+const { animationDuration: duration } = config;
 
 export default Controller.extend({
   animationRules,
