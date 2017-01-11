@@ -4,6 +4,13 @@ export default DS.Model.extend({
   price: DS.attr('number'),
   token: DS.attr(),
   item: DS.belongsTo(),
-  shippingContact: DS.attr(),
-  description: DS.attr()
+  description: DS.attr(),
+  givenName: DS.attr(),
+  familyName: DS.attr(),
+  emailAddress: DS.attr(),
+  addressLines: DS.attr(),
+  locality: DS.attr(),
+  administrativeArea: DS.attr(),
+  postalCode: DS.attr(),
+  countryCode: DS.attr()
 });

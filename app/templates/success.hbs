@@ -9,19 +9,19 @@ Expect a confirmation email
 </div>
 
 <div>
-  Name: {{model.shippingContact.givenName}} {{model.shippingContact.familyName}}
+  Name: {{model.givenName}} {{model.familyName}}
 </div>
 
 <div>
-  Email: {{model.shippingContact.emailAddress}}
+  Email: {{model.emailAddress}}
 </div>
 
 <div>
-  {{#each model.shippingContact.addressLines as |line|}}
+  {{#each model.addressLines as |line|}}
     {{line}}
   {{/each}}
 
-  {{model.shippingContact.locality}}, {{model.shippingContact.administrativeArea}} {{model.shippingContact.postaCode}}
+  {{model.locality}}, {{model.administrativeArea}} {{model.postalCode}}
 </div>
 
 {{show-item item=model.item}}
