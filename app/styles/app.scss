@@ -1,9 +1,13 @@
+@import "bower_components/bootstrap/scss/bootstrap-grid";
+@import "bower_components/bootstrap/scss/utilities/clearfix";
+@import "bower_components/bootstrap/scss/utilities/flex";
+
 $headerHeight: 75px;
 $footerHeight: $headerHeight;
 $orangeColor: #e65100;
 $beigeColor: #fffde7;
 
-body {
+.baseline {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   background-color: $beigeColor;
@@ -42,13 +46,11 @@ body {
   color: $beigeColor;
 }
 
-.toolbar-content {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+.header-height {
+  height: $headerHeight;
 }
 
-.body {
+.scroll-container {
   position: fixed;
   width: 100%;
   top: $headerHeight;

@@ -1,18 +1,30 @@
-<div class='header'>
+<div class='header container-fluid'>
   {{#from-elsewhere name="header" as |header|}}
     {{#liquid-bind header rules=animationRules as |opts|}}
-      <div class='toolbar-content'>
-        {{#if opts.component}}
-          {{component opts.component}}
-        {{/if}}
+      <div class='row align-content-stretch header-height'>
+        <div class="col-2 align-self-center">
+          {{#if opts.component}}
+            {{component opts.component}}
+          {{/if}}
+        </div>
 
-        <h1 class='section-store__title'>{{opts.title}}</h1>
+        <div class="col-8 align-self-center">
+          <h1 class='section-store__title'>{{opts.title}}</h1>
+        </div>
+
+        <div class="col-2 align-self-center">
+          {{#if cart.count}}
+            {{#link-to 'cart' data-test-selector="view-cart"}}
+              Cart: <span data-test-cart-count>{{cart.count}}</span>
+            {{/link-to}}
+          {{/if}}
+        </div>
       </div>
-      {{/liquid-bind}}
+    {{/liquid-bind}}
   {{/from-elsewhere}}
 </div>
 
-<div class='body'>
+<div class='scroll-container'>
   {{liquid-outlet}}
 </div>
 

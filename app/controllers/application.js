@@ -1,10 +1,12 @@
 import Ember from 'ember';
 import { duration } from 'bodega/transitions';
-const { Controller } = Ember;
+const { Controller, inject } = Ember;
 
 export default Controller.extend({
   animationRules,
-  footerAnimationRules
+  footerAnimationRules,
+
+  cart: inject.service()
 });
 
 function animationRules() {

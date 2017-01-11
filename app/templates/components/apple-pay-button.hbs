@@ -10,4 +10,7 @@
   </div>
 {{/if}}
 
-<button {{action 'beginApplePay'}} class="apple-pay-button {{if isAvailable "is-available"}}"></button>
+<button {{action 'beginApplePay'}}
+        class="apple-pay-button {{if isAvailable "is-available"}}"
+        data-test-pay>
+</button>
