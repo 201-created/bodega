@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, /* computed, */ inject, get } = Ember;
+const { assign, Component, /* computed, */ inject, get } = Ember;
 
 export default Component.extend({
   stripe: inject.service(),
@@ -42,13 +42,13 @@ export default Component.extend({
 
       this.get('applePay').charge(paymentRequest).then(({ result, notify }) => {
         let store = this.get('store');
-        let charge = store.createRecord('charge', {
-          shippingContact: result.shippingContact,
+        let params = assign({}, result.shippingContact, {
           token: result.token.id,
           price,
           item,
           description: `201 Created Sticker: ${get(item, 'name')}`
         });
+        let charge = store.createRecord('charge', params);
 
         charge.save().then(() => {
           if (this.get('isDestroyed')) { return; }

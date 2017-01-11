@@ -20,18 +20,17 @@ function fakeRecord(store) {
     price: item.price,
     id: '12345',
     token: '12345ABCDE',
-    shippingContact: {
-      givenName: 'Bob',
-      familyName: 'Jones',
-      emailAddress: 'bob@201-created.com',
-      addressLines: [
-        '240 Kent Ave.',
-        'Suite 7'
-      ],
-      locality: 'Brooklyn',
-      administrativeArea: 'New York',
-      postalCode: '11234'
-    }
-  });
 
+    givenName: 'Bob',
+    familyName: 'Jones',
+    emailAddress: 'bob@201-created.com',
+    addressLines: [
+      '240 Kent Ave.',
+      'Suite 7'
+    ],
+    locality: 'Brooklyn',
+    administrativeArea: 'New York',
+    postalCode: '11234',
+    countryCode: 'US'
+  });
 }
