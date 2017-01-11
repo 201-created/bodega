@@ -1,12 +1,10 @@
 $headerHeight: 75px;
 $footerHeight: $headerHeight;
-$orangeColor: #e65100;
-$beigeColor: #fffde7;
 
 .baseline {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  background-color: $beigeColor;
+  background-color: $mcolor-yellow-50;
   margin: 0;
   padding: 1px;
   text-align: center;
@@ -30,8 +28,8 @@ $beigeColor: #fffde7;
   left: 0px;
   width: 100%;
   height: $headerHeight;
-  background: $orangeColor;
-  color: $beigeColor;
+  background: $mcolor-orange-900;
+  color: $mcolor-yellow-50;
 }
 
 .header-height {
@@ -54,7 +52,7 @@ $beigeColor: #fffde7;
 }
 
 .footer-message {
-  border-top: 1px solid $orangeColor;
+  border-top: 1px solid $mcolor-orange-900;
 }
 
 .liquid-container, .liquid-child {
