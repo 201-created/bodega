@@ -5,6 +5,7 @@ export default function() {
   this.get('/items');
 
   this.passthrough('https://api.stripe.com/**');
+  this.passthrough('https://checkout.stripe.com/**');
   this.passthrough('https://localhost.ssl:3000/**');
   this.passthrough('https://api.shop-201.com/**');
 
