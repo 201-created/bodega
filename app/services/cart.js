@@ -30,5 +30,5 @@ export default Service.extend({
 
   addItem(item) {
     this.items.pushObject(item);
-  },
+  }
 });

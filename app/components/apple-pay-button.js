@@ -38,7 +38,7 @@ export default Component.extend({
         }
       };
 
-      let router = this.get('router.router');
+      let router = this.get('router');
 
       this.get('applePay').charge(paymentRequest).then(({ result, notify }) => {
         let store = this.get('store');
