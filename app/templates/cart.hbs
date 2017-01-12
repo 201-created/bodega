@@ -1,21 +1,5 @@
-<table>
-  <thead>
-    <th>Name</th>
-    <th>Quantity</th>
-    <th>Price</th>
-  </thead>
-
-  <tbody>
-    {{#each cart.items as |item|}}
-      <tr>
-        <td>{{item.name}}</td>
-        <td>1</td>
-        <td>{{price-in-dollars item.price}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
-
-{{apple-pay-button item=cart.order}}
+{{bodega-cart order=cart.order
+              increment=(action 'increment')
+              decrement=(action 'decrement')}}
 
 {{to-elsewhere named="header" send=(hash component=(component "back-button") title="Cart")}}

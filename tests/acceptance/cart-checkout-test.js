@@ -13,8 +13,8 @@ test('purchasing an item via the cart', function(assert) {
   click(testSelector('add-to-cart'));
 
   andThen(() => {
-    let count = find(testSelector('cart-count')).text();
-    assert.equal(count, '1', 'shows one item in the cart');
+    let quantity = find(testSelector('cart-quantity')).text();
+    assert.equal(quantity, '1', 'shows one item in the cart');
   });
 
   click(testSelector('selector', 'view-cart'));

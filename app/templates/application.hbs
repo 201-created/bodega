@@ -13,9 +13,9 @@
         </div>
 
         <div class="col-2 align-self-center">
-          {{#if cart.count}}
+          {{#if cart.quantity}}
             {{#link-to 'cart' data-test-selector="view-cart"}}
-              Cart: <span data-test-cart-count>{{cart.count}}</span>
+              Cart: <span data-test-cart-quantity>{{cart.quantity}}</span>
             {{/link-to}}
           {{/if}}
         </div>

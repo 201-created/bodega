@@ -12,4 +12,8 @@
   </div>
 {{/if}}
 
-<button class='stripe-checkout__button' {{action 'checkout'}}>Pay with Card</button>
+<button {{action 'checkout'}}
+        class='stripe-checkout__button'
+        disabled={{disabled}}>
+  Pay with Card
+</button>
