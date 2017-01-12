@@ -6,6 +6,9 @@ export default Component.extend({
   router: inject.service(),
   stripeCheckout: inject.service(),
 
+  errorMessage: null,
+  successMessage: null,
+
   willDestroyElement() {
     if (this.handler) {
       this.handler.close();
@@ -60,6 +63,11 @@ export default Component.extend({
 
   actions: {
     checkout() {
+      this.setProperties({
+        errorMessage: null,
+        successMessage: null
+      });
+
       let tokenCallback = this._saveCharge.bind(this);
       this.handler = this.get('stripeCheckout').createHandler(tokenCallback);
 

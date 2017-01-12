@@ -1,3 +1,15 @@
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
+{{#if errorMessage}}
+  <div class='stripe-checkout__error' data-test-error={{errorMessage}}>
+    {{errorMessage}}
+  </div>
+{{/if}}
+
+{{#if successMessage}}
+  <div class='stripe-checkout__success' data-test-success={{successMessage}}>
+    {{successMessage}}
+  </div>
+{{/if}}
+
 <button class='stripe-checkout__button' {{action 'checkout'}}>Pay with Card</button>
