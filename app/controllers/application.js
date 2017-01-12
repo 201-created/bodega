@@ -7,7 +7,17 @@ export default Controller.extend({
   animationRules,
   footerAnimationRules,
 
-  cart: inject.service()
+  cart: inject.service(),
+
+  actions: {
+    increment(lineItem) {
+      this.get('cart').increment(lineItem);
+    },
+
+    decrement(lineItem) {
+      this.get('cart').decrement(lineItem);
+    }
+  }
 });
 
 function animationRules() {

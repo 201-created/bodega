@@ -29,6 +29,9 @@
     </main>
 
     <footer class='app-footer d-flex flex-column col-md-4 col-lg-3'>
+      {{bodega-cart order=cart.order
+                    increment=(action 'increment')
+                    decrement=(action 'decrement')}}
       {{#from-elsewhere name="footer" as |footer|}}
         {{#liquid-bind footer class='liquid-footer' rules=footerAnimationRules as |component|}}
           <div class='toolbar-content'>

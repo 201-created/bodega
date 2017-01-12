@@ -17,12 +17,11 @@ test('purchasing an item via the cart', function(assert) {
   click(testSelector('add-to-cart'));
 
   andThen(() => {
-    let quantity = find(testSelector('cart-quantity')).text();
+    let quantity = find(testSelector('total-quantity')).text();
     assert.equal(quantity, '1', 'shows one item in the cart');
     assert.ok(localStorage.get('order'), 'something placed in order localStorage');
   });
 
-  click(testSelector('selector', 'view-cart'));
   click(testSelector('pay'));
 
   andThen(() => {
