@@ -1,10 +1,9 @@
 .show-item {
-  width: 220px;
-  margin: 0 auto 5em;
-
-  // have to provide a min-height to make liquid-fire
-  // compute position correctly.
-  min-height: 211px;
+  background-color: rgba($mcolor-blue-grey-100, 0.1);
+  border: .25rem rgba($mcolor-blue-grey-200, 0.5) dashed;
+  border-radius: 1rem;
+  height: 100%;
+  overflow: hidden;
 
   &.is-focused {
     width: 300px;
@@ -12,13 +11,42 @@
   }
 }
 
-@media only screen and (min-width: 861px) {
-  .show-item__image {
-    height: 230px;
+.show-item__image {
+  position: relative;
+  padding-top: 110%;
+
+  img {
+    display:  block;
+    position: absolute;
+    top: $spacer-y;
+    left: $spacer-x;
+    right: $spacer-x;
+    bottom: $spacer-y;
+    max-width: 202px;
+    margin: auto;
   }
 }
 
-.show-item__image img {
-  display:  block;
-  width: 100%;
+.show-item__footer {
+  background-color: $mcolor-blue-grey-50;
+  color: $mcolor-blue-grey-500;
+}
+
+.show-item__name,
+.show-item__price {
+  font-size: $font-size-sm;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.show-item__name {
+  color: $mcolor-deep-orange-500;
+}
+
+.show-item__price {
+  text-align: right;
+
+  &:before {
+    content: '$';
+  }
 }

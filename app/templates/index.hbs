@@ -1,13 +1,13 @@
-<section class='section-store'>
-
-  {{#memory-scroll class="section-store__items-container" key="index-items"}}
+{{#memory-scroll class="scroll-container container index-container py-4" key="index-items"}}
+  <h1 class='section-title'>Stickers</h1>
+  <div class='row py-3'>
     {{#each model as |item|}}
-      {{#link-to 'item' item}}
-        {{show-item item=item}}
+      {{#link-to 'item' item class="col col-6 col-md-4 col-xl-3 mb-4"}}
+        {{show-item item=item class='index-container__item py-1'}}
       {{/link-to}}
     {{/each}}
-  {{/memory-scroll}}
-</section>
+  </div>
+{{/memory-scroll}}
 
 {{to-elsewhere named="header" send=(hash title="Grab a sticker")}}
 {{to-elsewhere named="footer" send=null}}

@@ -1,58 +1,49 @@
-.baseline {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  background-color: $mcolor-yellow-50;
-  margin: 0;
-  padding: 1px;
-  text-align: center;
+.viewport {
+  @include gradient-y(white, $mcolor-grey-100);
+  height: 100vh;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent; /* For some Android devices */
 }
 
-.section-store__items-container {
-  height: 100%;
-  width: 100%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-
-  &.no-scroll {
-    overflow-y: hidden;
-  }
+.viewport-content {
+  flex: 1;
 }
 
-.header {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: $headerHeight;
-  background: $mcolor-orange-900;
-  color: $mcolor-yellow-50;
-}
-
-.header-height {
-  height: $headerHeight;
-}
-
-.scroll-container {
-  position: fixed;
-  width: 100%;
-  top: $headerHeight;
-  bottom: $footerHeight;
-}
-.footer {
-  position: fixed;
-  width: 100%;
-  height: $footerHeight;
-  bottom: 0px;
-  margin-left: -1px;
-  margin-right: -1px;
-}
-
-.footer-message {
-  border-top: 1px solid $mcolor-orange-900;
+.app-body {
+  flex: 1;
 }
 
 .liquid-container, .liquid-child {
   width: 100%;
-  height: 100%
+  height: 100%;
+}
+
+.container-scroll,
+.container-no-scroll-y {
+  height: 100%;
+}
+.container-scroll {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container-no-scroll-y {
+  overflow-y: hidden;
+}
+
+.font-size-xs {
+  font-size: $font-size-xs;
+}
+
+.section-title {
+  font-size: $font-size-h4;
+  font-weight: bold;
+  color: $mcolor-blue-grey-900;
+  padding-bottom: $spacer-y;
+  border-bottom: .25rem solid $mcolor-blue-grey-500;
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-h2;
+  }
+
 }

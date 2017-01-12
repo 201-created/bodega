@@ -1,8 +1,6 @@
-<section class='section-store'>
-  <div class='section-store__items-container no-scroll'>
-    {{show-item item=model isFocused=true}}
-  </div>
-</section>
+<div class='container container-no-scroll-y py-4'>
+  {{show-item item=model isFocused=true}}
+</div>
 
 {{to-elsewhere named="header" send=(hash component=(component "back-button") title=model.name)}}
 {{to-elsewhere named="footer" send=(component "item-footer" item=model)}}

@@ -1,8 +1,8 @@
-<article class="show-item {{if isFocused 'is-focused'}}"
+<article class="show-item container {{if isFocused 'is-focused'}}"
   data-test-item={{item.id}}
   data-item-id={{item.id}}>
-  <div class="show-item__image">
-    <img src={{item.url}}>
+  <div class="show-item__image row">
+    <img src={{item.url}} class='img-fluid'>
   </div>
 
   {{#if isFocused}}
@@ -10,4 +10,9 @@
       <a href={{smsHref}}>Share by SMS</a>
     </div>
   {{/if}}
+
+  <footer class='show-item__footer row py-1'>
+    <h1 class='show-item__name col col-6'>{{item.name}}</h1>
+    <div class='show-item__price col col-6'>{{price-in-dollars item.price}}</div>
+  </footer>
 </article>

@@ -1,0 +1,57 @@
+.app-header {
+  @include material-shadow(1);
+  background-color: $mcolor-blue-grey-900;
+  color: $mcolor-blue-grey-300;
+
+  a {
+    color: inherit;
+  }
+
+  .navbar-action,
+  .colophon {
+    width: 75px;
+  }
+
+  .svg-logo {
+    fill: $mcolor-blue-grey-300;
+
+    .svg-logo__201 {
+      fill: $mcolor-cyan-600;
+    }
+
+    &:hover {
+      fill: $mcolor-yellow-50;
+
+      .svg-logo__201 {
+        fill: $mcolor-light-green-600;
+      }
+    }
+
+    &:active {
+      fill: white;
+    }
+  }
+
+  .font-size-xs {
+    display: block;
+    margin-top: -0.5em;
+    font-size: .5rem;
+    line-height: 1;
+    text-align: right;
+    color: $mcolor-blue-grey-500;
+  }
+}
+
+.navbar-brand {
+  font-size: $font-size-h5;
+  font-weight: 300;
+  margin: 0;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  padding-left: .2em;
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-h4;
+  }
+}
