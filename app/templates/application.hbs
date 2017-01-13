@@ -1,6 +1,6 @@
 <div class='viewport d-flex flex-column'>
   <header class='app-header navbar navbar-inverted flex-row justify-content-between'>
-    <div class='navbar-action'>
+    <div class='app-header__action'>
       {{#from-elsewhere name="header" as |header|}}
         {{#liquid-bind header rules=animationRules as |opts|}}
           {{#if opts.component}}
@@ -9,8 +9,10 @@
         {{/liquid-bind}}
       {{/from-elsewhere}}
     </div>
-    <h1 class='navbar-brand mx-1'>Bodega</h1>
-    <a href="https://www.201-created.com/"><small class='colophon navbar-text'>{{svg-logo}}<span class='font-size-xs'>experiment</span></small></a>
+
+    <h1 class='navbar-brand mx-1'>Shop <span class='sr-only'>201</span> {{svg-logo logoStyle='badge' class='d-inline-block align-middle'}}</h1>
+
+    <a class='app-header__colophon navbar-text' href="https://www.201-created.com/">{{svg-logo}}<span class='font-size-xs'>experiment</span></a>
   </header>
 
   <div class='viewport-content d-flex flex-column flex-md-row justify-content-stretch no-gutters'>
