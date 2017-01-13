@@ -19,20 +19,29 @@
 
   .svg-logo {
     fill: $mcolor-blue-grey-300;
+  }
+
+  .svg-logo__201 {
+    fill: $mcolor-cyan-600;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .svg-logo {
+      fill: $mcolor-yellow-50;
+    }
 
     .svg-logo__201 {
-      fill: $mcolor-cyan-600;
+      fill: $mcolor-light-green-600;
     }
+  }
 
-    &:hover {
-      fill: $mcolor-yellow-50;
+  &:active {
+    text-decoration: none;
 
-      .svg-logo__201 {
-        fill: $mcolor-light-green-600;
-      }
-    }
-
-    &:active {
+    .svg-logo,
+    .svg-logo__201 {
       fill: white;
     }
   }
