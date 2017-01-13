@@ -34,6 +34,10 @@ export default class Order {
     let item = this.items.find(i => i.id === lineItem.itemId);
     return new Order([...this.items, item]);
   }
+
+  serialize() {
+    return this.items;
+  }
 }
 
 function buildLineItems(items) {

@@ -2,11 +2,15 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'bodega/tests/helpers/module-for-acceptance';
 import testSelector from 'bodega/tests/helpers/ember-test-selectors';
 import FakeApplePay from 'bodega/tests/fakes/apple-pay';
+import FakeLocalStorage from 'bodega/tests/fakes/local-storage';
 
 moduleForAcceptance('Acceptance | cart-checkout');
 
 test('purchasing an item via the cart', function(assert) {
-  this.application.__deprecatedInstance__.register('service:apple-pay', FakeApplePay);
+  let appInstance = this.application.__deprecatedInstance__;
+  appInstance.register('service:apple-pay', FakeApplePay);
+  appInstance.register('service:local-storage', FakeLocalStorage);
+  let localStorage = appInstance.lookup('service:local-storage');
 
   let item = this.server.create('item', 1);
   visit(`/${item.id}`);
@@ -15,6 +19,7 @@ test('purchasing an item via the cart', function(assert) {
   andThen(() => {
     let quantity = find(testSelector('cart-quantity')).text();
     assert.equal(quantity, '1', 'shows one item in the cart');
+    assert.ok(localStorage.get('order'), 'something placed in order localStorage');
   });
 
   click(testSelector('selector', 'view-cart'));
@@ -31,5 +36,6 @@ test('purchasing an item via the cart', function(assert) {
     }, 'created a charge on the server');
 
     assert.equal(find(testSelector('success-message')).length, 1, 'shows success message');
+    assert.equal(localStorage.get('order'), '[]', 'localStorage `order` is empty');
   });
 });

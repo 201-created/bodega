@@ -5,6 +5,7 @@ export default Component.extend({
   store: inject.service(),
   router: inject.service(),
   stripeCheckout: inject.service(),
+  cart: inject.service(),
 
   errorMessage: null,
   successMessage: null,
@@ -51,6 +52,7 @@ export default Component.extend({
 
     charge.save().then(() => {
       if (this.get('isDestroyed')) { return; }
+      this.get('cart').clear();
       this.set('successMessage', 'Purchase is on its way');
 
       let router = this.get('router');

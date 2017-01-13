@@ -7,6 +7,7 @@ export default Component.extend({
   applePay: inject.service(),
   store: inject.service(),
   router: inject.service(),
+  cart: inject.service(),
 
   // TODO eventually, use the applePay.isAvailable flag here. Hardcode to true
   // for now (to simplify visual testing on non-apple-pay platforms)
@@ -54,6 +55,7 @@ export default Component.extend({
           if (this.get('isDestroyed')) { return; }
           this.set('successMessage', 'Purchase is on its way');
           notify.success();
+          this.get('cart').clear();
 
           router.transitionTo('success', charge);
         }).catch(() => {
