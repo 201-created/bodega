@@ -2,6 +2,7 @@
   @include material-shadow(1);
   background-color: $mcolor-blue-grey-900;
   color: $mcolor-blue-grey-300;
+  z-index: $zindex-navbar;
 
   a {
     color: inherit;

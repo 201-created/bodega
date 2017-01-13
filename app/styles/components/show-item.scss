@@ -18,10 +18,11 @@
   img {
     display:  block;
     position: absolute;
-    top: $spacer-y;
-    left: $spacer-x;
-    right: $spacer-x;
-    bottom: $spacer-y;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
     max-width: 202px;
     margin: auto;
   }
