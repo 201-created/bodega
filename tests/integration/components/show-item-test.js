@@ -1,4 +1,4 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { moduleForComponent, test, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import testSelector from 'bodega/tests/helpers/ember-test-selectors';
 import { smsHref } from 'bodega/components/show-item';
@@ -16,7 +16,8 @@ test('it renders', function(assert) {
   assert.ok(this.$(`img[src="${item.url}"]`).length, 'shows image');
 });
 
-test('show SMS link when focused', function(assert) {
+// TODO: The SMS link needs to find a new home.
+skip('show SMS link when focused', function(assert) {
   let item = {id: 1, name: 'my item', url: '/dummy-image', price: 1099};
   this.set('item', item);
   this.set('isFocused', false);

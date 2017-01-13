@@ -13,7 +13,7 @@ test('purchasing an item via the cart', function(assert) {
   let localStorage = appInstance.lookup('service:local-storage');
 
   let item = this.server.create('item', 1);
-  visit(`/${item.id}`);
+  visit(`/`);
   click(testSelector('add-to-cart'));
 
   andThen(() => {
@@ -29,7 +29,8 @@ test('purchasing an item via the cart', function(assert) {
     assert.deepEqual(charge.attrs, {
       description: `201 Created Sticker: ${item.name}`,
       id: "1",
-      itemId: null, // TODO: One charge may have many items
+      // One charge may have many items. As of writing, this field isn't used.
+      itemId: null,
       price: item.price,
       token: "fake-token-id"
     }, 'created a charge on the server');
