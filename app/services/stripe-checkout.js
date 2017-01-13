@@ -7,7 +7,7 @@ export default Service.extend({
   createHandler(tokenCallback) {
     return StripeCheckout.configure({
       key: config.stripe.publishableKey,
-      image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+      image: '/assets/images/favicon-196x196.png',
       locale: 'auto',
       shippingAddress: true,
       billingAddress: true,
