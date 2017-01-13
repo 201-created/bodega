@@ -3,19 +3,9 @@
     <div class='navbar-action'>
       {{#from-elsewhere name="header" as |header|}}
         {{#liquid-bind header rules=animationRules as |opts|}}
-            {{#if opts.component}}
-              {{component opts.component}}
-            {{/if}}
-        {{!-- <div class="col-2 align-self-center">
-            {{#if cart.quantity}}
-              {{#link-to 'cart' data-test-selector="view-cart"}}
-                Cart: <span data-test-cart-quantity>{{cart.quantity}}</span>
-              {{/link-to}}
-            {{/if}}
-          </div> --}}
-          {{!-- <div class="col-8 align-self-center">
-            <h1 class='section-store__title'>{{opts.title}}</h1>
-          </div> --}}
+          {{#if opts.component}}
+            {{component opts.component}}
+          {{/if}}
         {{/liquid-bind}}
       {{/from-elsewhere}}
     </div>
@@ -31,18 +21,8 @@
     <footer class='app-footer d-flex flex-column col-md-4 col-lg-3'>
       {{bodega-cart order=cart.order
                     increment=(action 'increment')
-                    decrement=(action 'decrement')}}
-      {{#from-elsewhere name="footer" as |footer|}}
-        {{#liquid-bind footer class='liquid-footer' rules=footerAnimationRules as |component|}}
-          <div class='toolbar-content'>
-            {{#if component}}
-              {{component component}}
-            {{else}}
-              Add items to your cart
-            {{/if}}
-          </div>
-        {{/liquid-bind}}
-      {{/from-elsewhere}}
+                    decrement=(action 'decrement')
+                    class='container py-2'}}
     </footer>
   </div>
 </div>

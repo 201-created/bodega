@@ -1,37 +1,40 @@
-<table>
-  <thead>
-    <tr>
-      <th><!-- Picture of sticker --></th>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    {{#each order.lineItems as |lineItem|}}
+{{#if order.lineItems}}
+  <table>
+    <thead>
       <tr>
-        <td><img height=100 width=100 alt="sticker-picture" src={{lineItem.url}}></td>
-        <td>{{lineItem.name}}</td>
-        <td>{{lineItem.quantity}}</td>
-        <td>{{price-in-dollars lineItem.price}}</td>
-        <td>
-          <button onclick={{action decrement lineItem}}>
-            {{if (eq lineItem.quantiy 1) 'x' '-'}}
-          </button>
-          <button onclick={{action increment lineItem}}>+</button>
-        </td>
+        <th><!-- Picture of sticker --></th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
       </tr>
-    {{/each}}
+    </thead>
 
-    <tr>
-      <td><!-- Picture of sticker --></td>
-      <td>Total</td>
-      <td data-test-total-quantity>{{order.quantity}}</td>
-      <td data-test-total-price>{{price-in-dollars order.price}}</td>
-    </tr>
-  </tbody>
-</table>
+    <tbody>
+      {{#each order.lineItems as |lineItem|}}
+        <tr>
+          <td><img height=100 width=100 alt="sticker-picture" src={{lineItem.url}}></td>
+          <td>{{lineItem.name}}</td>
+          <td>{{lineItem.quantity}}</td>
+          <td>{{price-in-dollars lineItem.price}}</td>
+          <td>
+            <button onclick={{action decrement lineItem}}>
+              {{if (eq lineItem.quantiy 1) 'x' '-'}}
+            </button>
+            <button onclick={{action increment lineItem}}>+</button>
+          </td>
+        </tr>
+      {{/each}}
+
+      <tr>
+        <td><!-- Picture of sticker --></td>
+        <td>Total</td>
+        <td data-test-total-quantity>{{order.quantity}}</td>
+        <td data-test-total-price>{{price-in-dollars order.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+{{else}}
+{{/if}}
 
 <div class="row">
   <div class="col">

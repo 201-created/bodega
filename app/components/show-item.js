@@ -10,7 +10,6 @@ export function smsHref(id){
 export default Component.extend({
   cart: inject.service(),
 
-  isFocused: false,
   smsHref: computed('item.id', function() {
     let id = this.get('item.id');
     return htmlSafe(smsHref(id));
