@@ -1,7 +1,5 @@
-{{#memory-scroll class="d-flex flex-column h-100 col p-0" key="index-items"}}
-  {{#items-slider class='items-slider'}}
-    {{#each model as |item|}}
-      {{show-item item=item class='item'}}
-    {{/each}}
-  {{/items-slider}}
-{{/memory-scroll}}
+{{#items-slider class='items-slider col p-0'}}
+  {{#each model as |item|}}
+    {{show-item item=item class='item'}}
+  {{/each}}
+{{/items-slider}}

@@ -1,8 +1,8 @@
 .app-header {
-  @include material-shadow(1);
+  @include material-shadow(1.5);
   background-color: $mcolor-blue-grey-900;
   color: $mcolor-blue-grey-300;
-  z-index: $zindex-navbar;
+  z-index: $zindex-fixed;
 
   a {
     color: inherit;

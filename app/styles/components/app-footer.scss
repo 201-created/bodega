@@ -1,10 +1,10 @@
 .app-footer {
-  @include gradient-y($mcolor-grey-50, $mcolor-grey-200);
-  border-left: 1px solid $mcolor-grey-300;
+  @include gradient-y(white, $mcolor-grey-100);
   overflow: auto;
-  height: 120px;
+  height: 220px;
+  @include material-shadow(1);
 
   @include media-breakpoint-up(md) {
-    height: 100%;
+    height: auto;
   }
 }
