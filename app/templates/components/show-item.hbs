@@ -4,7 +4,9 @@
 
   <h1 class='sr-only'>{{item.name}}</h1>
 
-  <img src={{item.url}} class='show-item__image'>
+  <div class='show-item__image' style='background-image: url({{item.url}});'>
+    <img src={{item.url}} class='d-none'>
+  </div>
 
   <strong class='show-item__price text-center'>{{price-in-dollars item.price}}</strong>
   <button {{action 'addToCart'}} class='show-item__add-to-cart btn btn-large btn-success'>Add to Cart</button>
