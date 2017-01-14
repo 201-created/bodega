@@ -1,8 +1,7 @@
-{{#memory-scroll class="scroll-container container index-container py-4" key="index-items"}}
-  <h1 class='section-title'>Stickers</h1>
-  <div class='row py-3'>
+{{#memory-scroll class="d-flex flex-column h-100" key="index-items"}}
+  {{#items-slider class='items-slider'}}
     {{#each model as |item|}}
-      {{show-item item=item class='index-container__item py-1 col col-6 col-md-4 col-xl-3 mb-4'}}
+      {{show-item item=item class='item'}}
     {{/each}}
-  </div>
+  {{/items-slider}}
 {{/memory-scroll}}

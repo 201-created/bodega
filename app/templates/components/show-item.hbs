@@ -1,17 +1,15 @@
 <article class="show-item container"
           data-test-item={{item.id}}
           data-item-id={{item.id}}>
-  <div class="show-item__image row">
-    <img src={{item.url}} class='img-fluid'>
-  </div>
 
+  <h1 class='sr-only'>{{item.name}}</h1>
+
+  <img src={{item.url}} class='show-item__image'>
+
+  <strong class='show-item__price text-center'>{{price-in-dollars item.price}}</strong>
+  <button {{action 'addToCart'}} class='show-item__add-to-cart btn btn-large btn-success'>Add to Cart</button>
   {{!-- TODO: Figure out where this should go now
   <div class="show-item__sms">
     <a href={{smsHref}}>Share by SMS</a>
   </div> --}}
-
-  <footer class='show-item__footer row py-1'>
-    <h1 class='show-item__name col col-6'>{{item.name}}</h1>
-    <div class='show-item__price col col-6'>{{price-in-dollars item.price}}</div>
-  </footer>
 </article>

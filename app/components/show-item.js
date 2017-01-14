@@ -15,11 +15,13 @@ export default Component.extend({
     return htmlSafe(smsHref(id));
   }),
 
-  click() {
-    this.get('cart').addItem(this.get('item'));
-  },
-
   didInsertElement() {
     this.element.setAttribute('data-test-add-to-cart', true);
+  },
+
+  actions: {
+    addToCart() {
+      this.get('cart').addItem(this.get('item'));
+    }
   }
 });
