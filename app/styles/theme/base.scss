@@ -32,5 +32,10 @@
   @include media-breakpoint-up(md) {
     font-size: $font-size-h2;
   }
+}
 
+.sticker-canvas {
+  background-color: rgba($mcolor-blue-grey-100, 0.1);
+  border: .25rem rgba($mcolor-blue-grey-200, 0.5) dashed;
+  border-radius: 1rem;
 }

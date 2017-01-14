@@ -21,10 +21,10 @@
     </main>
 
     <footer class='app-footer d-flex flex-column col-md-4 col-lg-3'>
-      {{bodega-cart order=cart.order
+      {{bodega-cart class='col py-2 px-1'
+                    order=cart.order
                     increment=(action 'increment')
-                    decrement=(action 'decrement')
-                    class='container py-2'}}
+                    decrement=(action 'decrement')}}
     </footer>
   </div>
 </div>

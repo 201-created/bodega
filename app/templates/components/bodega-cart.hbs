@@ -1,45 +1,34 @@
 {{#if order.lineItems}}
-  <table>
-    <thead>
-      <tr>
-        <th><!-- Picture of sticker --></th>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {{#each order.lineItems as |lineItem|}}
-        <tr>
-          <td><img height=100 width=100 alt="sticker-picture" src={{lineItem.url}}></td>
-          <td>{{lineItem.name}}</td>
-          <td>{{lineItem.quantity}}</td>
-          <td>{{price-in-dollars lineItem.price}}</td>
-          <td>
-            <button onclick={{action decrement lineItem}}>
-              {{if (eq lineItem.quantiy 1) 'x' '-'}}
-            </button>
-            <button onclick={{action increment lineItem}}>+</button>
-          </td>
-        </tr>
-      {{/each}}
-
-      <tr>
-        <td><!-- Picture of sticker --></td>
-        <td>Total</td>
-        <td data-test-total-quantity>{{order.quantity}}</td>
-        <td data-test-total-price>{{price-in-dollars order.price}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class='sticker-canvas row justify-content-center py-2 mx-0'>
+    {{#each order.lineItems as |lineItem|}}
+      <article class='bodega-cart__item col col-4 col-md-12 my-md-4 text-center' style='background-image: url({{lineItem.url}});'>
+        <h1 class='sr-only'>{{lineItem.name}}</h1>
+        <footer class='bodega-cart__item-footer'>
+          <div class='btn-group btn-group-sm mb-1' role='group'>
+            <button onclick={{action decrement lineItem}} class='btn btn-secondary'>-</button>
+            <span class='btn btn-disabled'>{{lineItem.quantity}}</span>
+            <button onclick={{action increment lineItem}} class='btn btn-secondary'>+</button>
+          </div>
+        </footer>
+      </article>
+    {{/each}}
+  </div>
 {{else}}
 {{/if}}
 
-<div class="row">
-  <div class="col">
-    {{apple-pay-button item=order disabled=(eq order.quantity 0)}}
+<div class='row p-2 pt-md-3'>
+  <div class='col'>
+    <strong>Total:</strong>
+    <span data-test-total-quantity>{{order.quantity}}</span>
   </div>
+  <div class='col text-right' data-test-total-price>{{price-in-dollars order.price}}</div>
+</div>
+<div class="row">
+  {{#if applePayIsAvailable}}
+    <div class="col">
+      {{apple-pay-button item=order disabled=(eq order.quantity 0)}}
+    </div>
+  {{/if}}
   <div class="col">
     {{stripe-checkout item=item disabled=(eq order.quantity 0)}}
   </div>

@@ -10,7 +10,7 @@
   max-height: 50%;
   margin: auto;
   background: center center no-repeat;
-  background-size: contain;
+  background-size: contain; // Safari doesn't like this in shorthand property
 
   @include media-breakpoint-up(md) {
     bottom: $spacer-y * 12;
