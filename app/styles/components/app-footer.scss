@@ -16,6 +16,7 @@
 
   @include media-breakpoint-up(md) {
     height: auto;
+    max-height: 100%;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 

@@ -51,3 +51,41 @@
     margin-right: .125em;
   }
 }
+
+.colophon {
+  position: absolute;
+  left: $spacer-x * .5;
+  bottom: $spacer-y * .25;
+  width: $spacer-x * 4;
+
+  .svg-logo {
+    fill: $mcolor-blue-grey-200;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .svg-logo {
+      fill: $mcolor-blue-grey-500;
+    }
+
+    .svg-logo__201 {
+      fill: $mcolor-light-green-600;
+    }
+  }
+
+  &:active {
+    text-decoration: none;
+
+    .svg-logo,
+    .svg-logo__201 {
+      fill: white;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    left: $spacer-x;
+    bottom: $spacer-y;
+    width: $spacer-x * 5;
+  }
+}
