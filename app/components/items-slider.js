@@ -1,9 +1,10 @@
 import Ember from 'ember';
 const { Component } = Ember;
+/* global Flickity */
 
 export default Component.extend({
   didInsertElement() {
-    let carousel = new Flickity(this.element, {
+    new Flickity(this.element, {
       contain: true,
       cellSelector: '.item',
       setGallerySize: false,

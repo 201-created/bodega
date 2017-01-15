@@ -21,7 +21,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: $spacer-y * 5;
+  bottom: $spacer-y * 5.5;
   font-size: $font-size-base;
 
   &:before {
@@ -37,7 +37,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: $spacer-y * 2.5;
+  bottom: $spacer-y * 3;
   margin: auto;
   width: 10rem;
   transition-duration: 100ms;

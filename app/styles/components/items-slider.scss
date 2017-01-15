@@ -13,7 +13,7 @@
   }
 
   .flickity-page-dots {
-    bottom: $spacer-y * .5;
+    bottom: $spacer-y;
 
     @include media-breakpoint-up(md) {
       bottom: $spacer-y * 2;

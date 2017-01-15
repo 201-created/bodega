@@ -1,12 +1,25 @@
 .app-footer {
   @include gradient-y(white, $mcolor-grey-100);
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 155px;
   @include material-shadow(1);
+  height: 155px;
+  transition: all .2s ease-in-out;
+
+  &.is-empty {
+    height: 0;
+  }
+
+  .sticker-canvas {
+    min-height: $spacer-y * 4;
+  }
 
   @include media-breakpoint-up(md) {
     height: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    &.is-empty {
+      max-width: 0;
+    }
   }
 }
 

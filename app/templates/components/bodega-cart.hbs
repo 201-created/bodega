@@ -1,20 +1,17 @@
-{{#if order.lineItems}}
-  <div class='sticker-canvas row justify-content-center mx-0'>
-    {{#each order.lineItems as |lineItem|}}
-      <article class='bodega-cart__item col col-4 col-md-12 my-md-3 text-center' style='background-image: url({{lineItem.url}});'>
-        <h1 class='sr-only'>{{lineItem.name}}</h1>
-        <footer class='bodega-cart__item-footer'>
-          <div class='btn-group btn-group-sm' role='group'>
-            <button onclick={{action decrement lineItem}} class='btn btn-secondary'>-</button>
-            <span class='btn btn-disabled'>{{lineItem.quantity}}</span>
-            <button onclick={{action increment lineItem}} class='btn btn-secondary'>+</button>
-          </div>
-        </footer>
-      </article>
-    {{/each}}
-  </div>
-{{else}}
-{{/if}}
+<div class='sticker-canvas row mx-0'>
+  {{#each order.lineItems as |lineItem|}}
+    <article class='bodega-cart__item col col-4 col-md-12 my-md-3 text-center' style='background-image: url({{lineItem.url}});'>
+      <h1 class='sr-only'>{{lineItem.name}}</h1>
+      <footer class='bodega-cart__item-footer'>
+        <div class='btn-group btn-group-sm' role='group'>
+          <button onclick={{action decrement lineItem}} class='btn btn-secondary'>-</button>
+          <span class='btn btn-disabled'>{{lineItem.quantity}}</span>
+          <button onclick={{action increment lineItem}} class='btn btn-secondary'>+</button>
+        </div>
+      </footer>
+    </article>
+  {{/each}}
+</div>
 
 <div class='bodega-cart__total row pt-1 px-2 pt-md-3'>
   <div class='col'>
