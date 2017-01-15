@@ -1,6 +1,6 @@
 <div class='sticker-canvas row mx-0'>
   {{#each order.lineItems as |lineItem|}}
-    <article class='bodega-cart__item col col-4 col-md-12 my-md-3 text-center' style='background-image: url({{lineItem.url}});'>
+    <article class='bodega-cart__item {{if (eq lineItem.quantity 1) 'first-addition'}} col col-4 col-md-12 my-md-3 text-center' style='background-image: url({{lineItem.url}});'>
       <h1 class='sr-only'>{{lineItem.name}}</h1>
       <footer class='bodega-cart__item-footer'>
         <div class='btn-group btn-group-sm' role='group'>

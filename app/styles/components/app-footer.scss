@@ -2,10 +2,12 @@
   @include gradient-y(white, $mcolor-grey-100);
   @include material-shadow(1);
   height: 155px;
+  max-height: 155px; // Cover flex bugs
   transition: all .2s ease-in-out;
 
   &.is-empty {
     height: 0;
+    max-height: 0; // Cover flex bugs
   }
 
   .sticker-canvas {
