@@ -25,10 +25,7 @@
   font-size: $font-size-base;
 
   &:before {
-    content: '$';
     font-weight: normal;
-    color: $mcolor-blue-grey-500;
-    margin-right: .25em;
   }
 
   @include media-breakpoint-up(md) {

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { assign, Component, /*computed,*/ inject, get } = Ember;
+const { assign, Component, computed, inject, get } = Ember;
 
 export default Component.extend({
   stripe: inject.service(),
@@ -9,7 +9,7 @@ export default Component.extend({
   router: inject.service(),
   cart: inject.service(),
 
-  isAvailable: true, //computed.readOnly('applePay.isAvailable'),
+  isAvailable: computed.readOnly('applePay.isAvailable'),
   errorMessage: null,
   successMessage: null,
 

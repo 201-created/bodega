@@ -1,12 +1,13 @@
 .bodega-cart__item {
   background: top center no-repeat;
   background-size: contain; // Safari doesn't like this in shorthand property
-  height: 80px;
+  height: 70px;
 
   @include media-breakpoint-up(md) {
     height: 120px;
   }
 }
+
 .bodega-cart__item-footer {
   position: absolute;
   left: 0;
@@ -22,5 +23,13 @@
 
   .btn {
     font-size: $font-size-xs;
+  }
+}
+
+.bodega-cart__total {
+  font-size: $font-size-sm;
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-base;
   }
 }

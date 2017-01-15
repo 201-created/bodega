@@ -1,6 +1,10 @@
 .viewport {
   @include gradient-y($mcolor-grey-100, $mcolor-grey-200);
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent; /* For some Android devices */
 }
@@ -38,4 +42,12 @@
   background-color: rgba($mcolor-blue-grey-100, 0.1);
   border: .25rem rgba($mcolor-blue-grey-200, 0.5) dashed;
   border-radius: 1rem;
+}
+
+.dollars {
+  &:before {
+    content: '$';
+    color: $mcolor-blue-grey-500;
+    margin-right: .125em;
+  }
 }

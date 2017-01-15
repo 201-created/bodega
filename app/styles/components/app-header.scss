@@ -8,6 +8,10 @@
     color: inherit;
   }
 
+  @include media-breakpoint-down(md) {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
 }
 
 .app-header__action,
