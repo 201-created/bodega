@@ -2,10 +2,10 @@ import Ember from 'ember';
 const { Component, computed } = Ember;
 
 export default Component.extend({
-  logoStyle: 'horizontal', // Also 'vertical' or 'badge'
+  logoVariant: 'horizontal', // Also 'vertical' or 'badge'
 
-  viewBox: computed('logoStyle', function() {
-    let style = this.get('logoStyle');
+  viewBox: computed('logoVariant', function() {
+    let style = this.get('logoVariant');
 
     switch (style) {
       case 'vertical':
@@ -17,7 +17,7 @@ export default Component.extend({
     }
   }),
 
-  isHorizontal: computed.equal('logoStyle', 'horizontal'),
-  isVertical: computed.equal('logoStyle', 'vertical'),
-  isBadge: computed.equal('logoStyle', 'badge')
+  isHorizontal: computed.equal('logoVariant', 'horizontal'),
+  isVertical: computed.equal('logoVariant', 'vertical'),
+  isBadge: computed.equal('logoVariant', 'badge')
 });
