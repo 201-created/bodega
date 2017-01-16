@@ -4,6 +4,7 @@ const { Component } = Ember;
 
 export default Component.extend({
   didInsertElement() {
+    this._super(...arguments);
     new Flickity(this.element, {
       contain: true,
       cellSelector: '.item',
