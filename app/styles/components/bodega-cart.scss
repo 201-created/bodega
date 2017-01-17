@@ -2,10 +2,7 @@
   background: top center no-repeat;
   background-size: contain; // Safari doesn't like this in shorthand property
   height: 70px;
-
-  &.first-addition {
-    animation: grow-in .3s ease-in-out 0s;
-  }
+  animation: grow-in .3s ease-in-out 0s;
 
   @include media-breakpoint-up(md) {
     height: 120px;
