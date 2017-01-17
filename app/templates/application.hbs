@@ -7,6 +7,19 @@
     <main class='app-body d-flex flex-column col'>
       {{outlet}}
       <a class='colophon' href="https://www.201-created.com/"><span class='sr-only'>201 Created</span>{{svg-logo}}</a>
+
+      {{#if errorMessage}}
+        <div class='app-error' data-test-error={{errorMessage}}>
+          {{errorMessage}}
+        </div>
+      {{/if}}
+
+      {{#if successMessage}}
+        <div class='app-success' data-test-success={{successMessage}}>
+          {{successMessage}}
+        </div>
+      {{/if}}
+
     </main>
 
     <footer class='app-footer d-flex flex-column col col-md-4 col-lg-3 {{unless cart.order.lineItems 'is-empty'}}'>

@@ -8,10 +8,11 @@ export default Component.extend({
   store: inject.service(),
   router: inject.service(),
   cart: inject.service(),
+  status: inject.service(),
 
   isAvailable: computed.readOnly('applePay.isAvailable'),
-  errorMessage: null,
-  successMessage: null,
+  errorMessage: computed.alias('status.errorMessage'),
+  successMessage: computed.alias('status.successMessage'),
 
   init() {
     this._super(...arguments);

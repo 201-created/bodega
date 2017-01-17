@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import config from 'bodega/config/environment';
-const { Controller, inject } = Ember;
+const { computed, Controller, inject } = Ember;
 const { animationDuration: duration } = config;
 
 export default Controller.extend({
@@ -8,6 +8,10 @@ export default Controller.extend({
   footerAnimationRules,
 
   cart: inject.service(),
+  status: inject.service(),
+
+  errorMessage: computed.alias('status.errorMessage'),
+  successMessage: computed.alias('status.successMessage'),
 
   actions: {
     increment(lineItem) {
