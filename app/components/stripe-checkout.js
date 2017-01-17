@@ -1,14 +1,15 @@
 import Ember from 'ember';
-const { assign, Component, get, inject } = Ember;
+const { assign, Component, computed, get, inject } = Ember;
 
 export default Component.extend({
   store: inject.service(),
   router: inject.service(),
   stripeCheckout: inject.service(),
   cart: inject.service(),
+  status: inject.service(),
 
-  errorMessage: null,
-  successMessage: null,
+  errorMessage: computed.alias('status.errorMessage'),
+  successMessage: computed.alias('status.successMessage'),
 
   willDestroyElement() {
     if (this.handler) {

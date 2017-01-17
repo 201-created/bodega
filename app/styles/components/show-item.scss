@@ -1,24 +1,67 @@
-.show-item {
-  width: 220px;
-  margin: 0 auto 5em;
-
-  // have to provide a min-height to make liquid-fire
-  // compute position correctly.
-  min-height: 211px;
-
-  &.is-focused {
-    width: 300px;
-    margin-bottom: 0;
-  }
-}
-
-@media only screen and (min-width: 861px) {
-  .show-item__image {
-    height: 230px;
-  }
-}
-
-.show-item__image img {
+.show-item__image {
   display:  block;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: $spacer-y * 6;
+  width: 80%;
+  max-width: 500px;
+  max-height: 50%;
+  margin: auto;
+  background: center center no-repeat;
+  background-size: contain; // Safari doesn't like this in shorthand property
+
+  @include media-breakpoint-up(md) {
+    bottom: $spacer-y * 12;
+  }
+}
+
+.show-item__price {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: $spacer-y * 5.5;
+  font-size: $font-size-base;
+
+  &:before {
+    font-weight: normal;
+  }
+
+  @include media-breakpoint-up(md) {
+    bottom: $spacer-y * 10;
+  }
+}
+
+.show-item__add-to-cart {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: $spacer-y * 3;
+  margin: auto;
+  width: 10rem;
+  transition-duration: 100ms;
+
+  &,
+  &:focus {
+    @include material-shadow(1)
+  }
+
+  &:hover,
+  &:focus {
+    background-color: lighten($btn-success-bg, 5%);
+    border-color: lighten($btn-success-bg, 5%);
+    @include material-shadow(2);
+  }
+
+  &:active {
+    background-color: darken($btn-success-bg, 5%);
+    border-color: darken($btn-success-bg, 10%);
+    box-shadow: none;
+    transition-duration: 50ms;
+  }
+
+  @include media-breakpoint-up(md) {
+    bottom: $spacer-y * 7;
+  }
 }

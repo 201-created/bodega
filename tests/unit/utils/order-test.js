@@ -34,16 +34,18 @@ test('getting lineItems from the order', function(assert) {
     name: 'Item 1',
     price: 5,
     quantity: 2,
+    multiple: true,
     url: '/item-1.png'
-  }, 'first line item is aggregate of 2 items')
+  }, 'first line item is aggregate of 2 items');
 
   assert.deepEqual(order.lineItems[1], {
     itemId: 2,
     name: 'Item 2',
     price: 1,
     quantity: 1,
+    multiple: false,
     url: '/item-2.png'
-  }, 'second line item is has same value as item 2')
+  }, 'second line item is has same value as item 2');
 })
 
 test('order name lists all items and quantities', function(assert) {
@@ -55,7 +57,7 @@ test('order name lists all items and quantities', function(assert) {
     name: 'Item 1'
   }, {
     id: 2,
-    name: 'Item 2',
+    name: 'Item 2'
   }]);
 
   assert.equal(order.name, 'Item 1 (2x), Item 2', 'has name with all items and quantities');

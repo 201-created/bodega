@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { assign, Component, /* computed, */ inject, get } = Ember;
+const { assign, Component, computed, inject, get } = Ember;
 
 export default Component.extend({
   stripe: inject.service(),
@@ -8,12 +8,11 @@ export default Component.extend({
   store: inject.service(),
   router: inject.service(),
   cart: inject.service(),
+  status: inject.service(),
 
-  // TODO eventually, use the applePay.isAvailable flag here. Hardcode to true
-  // for now (to simplify visual testing on non-apple-pay platforms)
-  isAvailable: true, // computed.readOnly('applePay.isAvailable'),
-  errorMessage: null,
-  successMessage: null,
+  isAvailable: computed.readOnly('applePay.isAvailable'),
+  errorMessage: computed.alias('status.errorMessage'),
+  successMessage: computed.alias('status.successMessage'),
 
   init() {
     this._super(...arguments);

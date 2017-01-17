@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const { Component, computed } = Ember;
+const { Component, computed, inject } = Ember;
 const { htmlSafe } = Ember.String;
 
 export function smsHref(id){
@@ -8,9 +8,16 @@ export function smsHref(id){
 }
 
 export default Component.extend({
-  isFocused: false,
+  cart: inject.service(),
+
   smsHref: computed('item.id', function() {
     let id = this.get('item.id');
     return htmlSafe(smsHref(id));
-  })
+  }),
+
+  actions: {
+    addToCart() {
+      this.get('cart').addItem(this.get('item'));
+    }
+  }
 });

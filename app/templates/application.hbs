@@ -1,46 +1,32 @@
-<div class='header container-fluid'>
-  {{#from-elsewhere name="header" as |header|}}
-    {{#liquid-bind header rules=animationRules as |opts|}}
-      <div class='row align-content-stretch header-height'>
-        <div class="col-2 align-self-center">
-          {{#if opts.component}}
-            {{component opts.component}}
-          {{/if}}
+<div class='viewport d-flex flex-column'>
+  <header class='app-header navbar navbar-inverted flex-row justify-content-center'>
+    <h1 class='navbar-brand mx-1'>Shop <span class='sr-only'>201</span> {{svg-logo logoVariant='badge' class='d-inline-block align-middle'}}</h1>
+  </header>
+
+  <div class='d-flex flex-column flex-md-row col no-gutters p-0'>
+    <main class='app-body d-flex flex-column col'>
+      {{outlet}}
+      <a class='colophon' href="https://www.201-created.com/"><span class='sr-only'>201 Created</span>{{svg-logo}}</a>
+
+      {{#if errorMessage}}
+        <div class='app-error' data-test-error={{errorMessage}}>
+          {{errorMessage}}
         </div>
+      {{/if}}
 
-        <div class="col-8 align-self-center">
-          <h1 class='section-store__title'>{{opts.title}}</h1>
+      {{#if successMessage}}
+        <div class='app-success' data-test-success={{successMessage}}>
+          {{successMessage}}
         </div>
+      {{/if}}
 
-        <div class="col-2 align-self-center">
-          {{#if cart.quantity}}
-            {{#link-to 'cart' data-test-selector="view-cart"}}
-              Cart: <span data-test-cart-quantity>{{cart.quantity}}</span>
-            {{/link-to}}
-          {{/if}}
-        </div>
-      </div>
-    {{/liquid-bind}}
-  {{/from-elsewhere}}
-</div>
+    </main>
 
-<div class='scroll-container'>
-  {{liquid-outlet}}
-</div>
-
-<div class='footer'>
-
-  {{#from-elsewhere name="footer" as |footer|}}
-    {{#liquid-bind footer class='liquid-footer' rules=footerAnimationRules as |component|}}
-      <div class='toolbar-content'>
-        {{#if component}}
-          {{component component}}
-        {{else}}
-          <div class='footer-message'>
-            Stickers by 201 Created
-          </div>
-        {{/if}}
-      </div>
-    {{/liquid-bind}}
-  {{/from-elsewhere}}
+    <footer class='app-footer d-flex flex-column col col-md-4 col-lg-3 {{unless cart.order.lineItems 'is-empty'}}'>
+      {{bodega-cart class='col p-1'
+                    order=cart.order
+                    increment=(action 'increment')
+                    decrement=(action 'decrement')}}
+    </footer>
+  </div>
 </div>

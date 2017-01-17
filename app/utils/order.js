@@ -52,11 +52,13 @@ function buildLineItems(items) {
         itemId: item.id,
         price: item.price,
         quantity: 1,
+        multiple: false,
         url: item.url
       };
     } else {
       lineItem.price += item.price;
       lineItem.quantity++;
+      lineItem.multiple = lineItem.quantity > 1;
     }
   });
 
