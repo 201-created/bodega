@@ -58,7 +58,7 @@ function buildLineItems(items) {
     } else {
       lineItem.price += item.price;
       lineItem.quantity++;
-      lineItem.multiple = lineItem > 1;
+      lineItem.multiple = lineItem.quantity > 1;
     }
   });
 

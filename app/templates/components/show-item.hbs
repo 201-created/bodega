@@ -9,7 +9,7 @@
   </div>
 
   <strong class='show-item__price text-center dollars'>{{price-in-dollars item.price}}</strong>
-  <button {{action 'addToCart'}} class='show-item__add-to-cart btn btn-large btn-success'>Add to Cart</button>
+  <button {{action 'addToCart'}} class='show-item__add-to-cart btn btn-large btn-success' data-test-add-to-cart>Add to Cart</button>
   {{!-- TODO: Figure out where this should go now
   <div class="show-item__sms">
     <a href={{smsHref}}>Share by SMS</a>

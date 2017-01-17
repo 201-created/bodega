@@ -15,10 +15,6 @@ export default Component.extend({
     return htmlSafe(smsHref(id));
   }),
 
-  didInsertElement() {
-    this.element.setAttribute('data-test-add-to-cart', true);
-  },
-
   actions: {
     addToCart() {
       this.get('cart').addItem(this.get('item'));
