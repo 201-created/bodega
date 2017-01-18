@@ -8,8 +8,9 @@ export default Service.extend({
   init() {
     this._super(...arguments);
 
-    if (Stripe && Stripe.applePay) {
+    if (typeof Stripe === 'object' && Stripe.applePay) {
       Stripe.applePay.checkAvailability((result) => {
+        if (this.isDestroyed) { return }
         this.set('isAvailable', result);
       });
     }

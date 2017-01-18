@@ -19,6 +19,7 @@ module.exports = function(environment) {
     },
 
     apiHost: 'https://localhost.ssl:3000',
+    wwwHost: '',
     apiNamespace: 'api',
     stripe: {
       publishableKey: 'pk_test_SrD06JdAhT0DZvBEK8SZ9aiB'
@@ -51,6 +52,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.stripe.publishableKey = 'pk_live_f90QszZOgLBlf3U25ZhPnV0M';
     ENV.apiHost = 'https://api.shop-201.com';
+    ENV.wwwHost = 'https://shop-201.com';
 
     ENV['ember-cli-mirage'] = {
       enabled: false
