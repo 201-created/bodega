@@ -24,13 +24,23 @@ export default Component.extend({
   actions: {
     showModal() {
       this.setProperties({isVisible: true, showModalBackdrop: true});
-      run.later(this, this.set, 'showModalContent', true, this._transitionDuration);
+      run.later(() => {
+        if (this.isDestroyed) { return; }
+        this.set('showModalBackdrop', true);
+      }, this._transitionDuration);
     },
 
     hideModal() {
       this.set('showModalContent', false);
-      run.later(this, this.set, 'showModalBackdrop', false, this._transitionDuration);
-      run.later(this, this.set, 'isVisible', false, (this._transitionDuration * 2));
+      run.later(() => {
+        if (this.isDestroyed) { return; }
+        this.set('showModalBackdrop', false);
+      }, this._transitionDuration);
+
+      run.later(() => {
+        if (this.isDestroyed) { return; }
+        this.set('isVisible', false);
+      }, this._transitionDuration * 2);
     }
   }
 });
