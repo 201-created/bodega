@@ -6,9 +6,11 @@ export default Ember.Service.extend({
   init() {
     this._super(...arguments);
     this._online = () => {
+      console.log('_online');
       Ember.run(this, 'set', 'isOnline', true);
     };
     this._offline = () => {
+      console.log('_offline');
       Ember.run(this, 'set', 'isOnline', false);
     };
     window.addEventListener('online', this._online);
