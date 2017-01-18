@@ -7,8 +7,16 @@ export default Component.extend({
   stripeCheckout: inject.service(),
   cart: inject.service(),
   status: inject.service(),
+  online: inject.service(),
 
   errorMessage: computed.alias('status.errorMessage'),
+  isDisabled: computed.not('online.isOnline'),
+
+  title: computed('isDisabled', function() {
+    return this.get('isDisabled') ?
+      'Checkout is not available when you are offline' :
+      'Pay with Credit Card';
+  }),
 
   willDestroyElement() {
     if (this.handler) {
