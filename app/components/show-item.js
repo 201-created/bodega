@@ -10,6 +10,8 @@ export function smsHref(id){
 
 export default Component.extend({
   cart: inject.service(),
+  fastboot: inject.service(),
+  isFastboot: computed.readOnly('fastboot.isFastBoot'),
 
   smsHref: computed('item.id', function() {
     let id = this.get('item.id');
