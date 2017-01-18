@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  isOnline: true,
+  isOnline: window.navigator ? window.navigator.onLine : true,
 
   init() {
     this._super(...arguments);
