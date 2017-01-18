@@ -13,7 +13,7 @@
       <dd class='col col-8'>{{model.id}}</dd>
 
       <dt class='col col-4'>Description:</dt>
-      <dd class='col col-8'>{{model.description}}</dd>
+      <dd class='col col-8' data-test-description={{model.description}}>{{model.description}}</dd>
 
       <dt class='col col-4'>Total:</dt>
       <dd class='col col-8'>${{price-in-dollars model.price}}</dd>

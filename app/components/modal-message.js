@@ -26,7 +26,7 @@ export default Component.extend({
       this.setProperties({isVisible: true, showModalBackdrop: true});
       run.later(() => {
         if (this.isDestroyed) { return; }
-        this.set('showModalBackdrop', true);
+        this.set('showModalContent', true);
       }, this._transitionDuration);
     },
 
