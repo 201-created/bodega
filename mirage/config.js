@@ -7,6 +7,7 @@ export default function() {
   this.passthrough('https://api.stripe.com/**');
   this.passthrough('https://checkout.stripe.com/**');
   this.passthrough('https://localhost.ssl:3000/**');
+  this.passthrough('http://localhost:3000/**');
   this.passthrough('https://api.shop-201.com/**');
 
   // These comments are here to help you get started. Feel free to delete them.
