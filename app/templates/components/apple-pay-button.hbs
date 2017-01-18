@@ -1,5 +1,6 @@
 <button {{action 'beginApplePay'}}
         class="apple-pay-button {{if isAvailable "is-available"}}"
-        disabled={{disabled}}
+        disabled={{isDisabled}}
+        title={{title}}
         data-test-pay>
 </button>
