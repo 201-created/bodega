@@ -1,31 +1,43 @@
-<h1 data-test-success-message>
-  Purchase is on its way.
-</h1>
+{{#modal-message showModalOnInit=true}}
+  <header class='modal-header bg-success text-white'>
+    <h1 class='modal-title' data-test-success-message>Purchase is on its way&hellip;</h1>
+  </header>
 
-Expect a confirmation email
+  <div class='modal-body'>
+    <p>&hellip;along with your confirmation email.</p>
 
-<div>
-  Order ID: {{model.id}}
-</div>
+    <h2 class='my-4'>Your order details:</h2>
 
-<div>
-  Name: {{model.givenName}} {{model.familyName}}
-</div>
+    <dl class='row pt-3'>
+      <dt class='col col-4'>Order ID:</dt>
+      <dd class='col col-8'>{{model.id}}</dd>
 
-<div>
-  Email: {{model.emailAddress}}
-</div>
+      <dt class='col col-4'>Description:</dt>
+      <dd class='col col-8'>{{model.description}}</dd>
 
-<div>
-  {{#each model.addressLines as |line|}}
-    {{line}}
-  {{/each}}
+      <dt class='col col-4'>Total:</dt>
+      <dd class='col col-8'>${{price-in-dollars model.price}}</dd>
 
-  {{model.locality}}, {{model.administrativeArea}} {{model.postalCode}}
-</div>
+      <dt class='col col-4'>Name:</dt>
+      <dd class='col col-8'>{{model.givenName}} {{model.familyName}}</dd>
 
-{{show-item item=model.item}}
+      <dt class='col col-4'>Email:</dt>
+      <dd class='col col-8'>{{model.emailAddress}}</dd>
 
-{{link-to 'Buy more stickers' 'application'}}
+      <dt class='col col-4'>Address:</dt>
+      <dd class='col col-8 justify-self-end'>
+        {{#each model.addressLines as |line|}}
+          {{line}}<br>
+        {{/each}}
+        {{model.locality}}, {{model.administrativeArea}} {{model.postalCode}}
+      </dd>
+    </dl>
+  </div>
+  <footer class='modal-footer'>
+    <a href="mailto:hello@201-created.com?subject=Re: Studio 201 - OrderID: {{model.id}}"
+       class="btn btn-secondary">Contact us</a>
+    {{link-to 'Buy more stickers' 'index' class='btn btn-success'}}
+  </footer>
+{{/modal-message}}
 
 {{to-elsewhere named="header" send=(hash component=(component "back-button") title="Success!")}}

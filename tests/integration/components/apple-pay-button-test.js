@@ -40,7 +40,7 @@ test('it renders', function(assert) {
 });
 
 test('clicking invokes Apple Pay', function(assert) {
-  assert.expect(7);
+  assert.expect(6);
 
   this.register('service:router', FakeRouter);
   let router = this.container.lookup('service:router');
@@ -49,8 +49,6 @@ test('clicking invokes Apple Pay', function(assert) {
   this.$('button').click();
 
   return wait().then(() => {
-    assert.ok(this.$(testSelector('success')).length, 'user sees success message');
-
     assert.deepEqual(this.applePay.chargesSent, [{
       countryCode: "US",
       currencyCode: "USD",
@@ -83,13 +81,18 @@ test('clicking invokes Apple Pay', function(assert) {
 });
 
 test('displays Apple Pay errors', function(assert) {
-  assert.expect(1);
+  assert.expect(2);
 
   this.applePay.rejectWith('bad request');
 
-  this.render(hbs`{{apple-pay-button item=item}}`);
+  this.render(hbs`{{apple-pay-button item=item}} {{modal-message}}`);
 
   this.$('button').click();
 
-  assert.ok(this.$(testSelector('error', 'bad request')).length, 'error message');
+
+  return wait().then(() =>{
+    let status = this.container.lookup('service:status');
+    assert.equal(status.get('errorMessage'), 'bad request', 'error message set on status service');
+    assert.ok(this.$(testSelector('error', 'bad request')).length, 'error message');
+  });
 });

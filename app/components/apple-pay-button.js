@@ -12,7 +12,6 @@ export default Component.extend({
 
   isAvailable: computed.readOnly('applePay.isAvailable'),
   errorMessage: computed.alias('status.errorMessage'),
-  successMessage: computed.alias('status.successMessage'),
 
   init() {
     this._super(...arguments);
@@ -21,10 +20,7 @@ export default Component.extend({
 
   actions: {
     beginApplePay() {
-      this.setProperties({
-        errorMessage: null,
-        successMessage: null
-      });
+      this.set('errorMessage', null);
 
       let item = this.get('item');
       let price = get(item, 'price');
@@ -52,7 +48,7 @@ export default Component.extend({
 
         charge.save().then(() => {
           if (this.get('isDestroyed')) { return; }
-          this.set('successMessage', 'Purchase is on its way');
+
           notify.success();
           this.get('cart').clear();
 

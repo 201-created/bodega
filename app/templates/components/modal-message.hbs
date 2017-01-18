@@ -1,0 +1,24 @@
+{{#if activateModal}}
+<div class='modal-backdrop fade {{if showModalBackdrop 'show'}}'></div>
+<div class='modal fade {{if showModalContent 'show'}}' tabindex="-1" role='dialog' aria-hidden='true'>
+  <article class='modal-dialog' role='document'>
+    {{#if errorMessage}}
+      <div class='app-error modal-content' data-test-error={{errorMessage}}>
+        <header class='modal-header bg-danger text-white'>
+          <h1 class='modal-title'>Error</h1>
+        </header>
+        <div class='modal-body'>
+          {{errorMessage}}
+        </div>
+        <footer class='modal-footer'>
+          <button type="button" class="btn btn-secondary" {{action 'hideModal'}}>Dismiss</button>
+        </footer>
+      </div>
+    {{else}}
+      <div class='modal-content'>
+        {{yield}}
+      </div>
+    {{/if}}
+  </article>
+</div>
+{{/if}}

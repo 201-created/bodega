@@ -9,7 +9,6 @@ export default Component.extend({
   status: inject.service(),
 
   errorMessage: computed.alias('status.errorMessage'),
-  successMessage: computed.alias('status.successMessage'),
 
   willDestroyElement() {
     if (this.handler) {
@@ -54,7 +53,6 @@ export default Component.extend({
     charge.save().then(() => {
       if (this.get('isDestroyed')) { return; }
       this.get('cart').clear();
-      this.set('successMessage', 'Purchase is on its way');
 
       let router = this.get('router');
       router.transitionTo('success', charge);
@@ -66,10 +64,7 @@ export default Component.extend({
 
   actions: {
     checkout() {
-      this.setProperties({
-        errorMessage: null,
-        successMessage: null
-      });
+      this.set('errorMessage', null);
 
       let tokenCallback = this._saveCharge.bind(this);
       this.handler = this.get('stripeCheckout').createHandler(tokenCallback);

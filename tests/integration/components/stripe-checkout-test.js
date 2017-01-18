@@ -45,7 +45,6 @@ test('clicking invokes Stripe checkout', function(assert) {
   this.$('button').click();
 
   return wait().then(() => {
-    assert.ok(this.$(testSelector('success')).length, 'user sees success message');
     assert.equal(this.server.db.charges.length, 1, 'creates a single charge on the server');
 
     let charge = this.server.schema.charges.first();
@@ -72,15 +71,17 @@ test('clicking invokes Stripe checkout', function(assert) {
 });
 
 test('displays error if charge saving fails', function(assert) {
-  assert.expect(1);
+  assert.expect(2);
 
   this.server.post('/charges', { status: 'bad request' }, 500);
 
-  this.render(hbs`{{stripe-checkout item=item}}`);
+  this.render(hbs`{{stripe-checkout item=item}} {{modal-message}}`);
 
   this.$('button').click();
 
   return wait().then(() => {
+    let status = this.container.lookup('service:status');
+    assert.equal(status.get('errorMessage'), 'Purchase failed', 'error message set on status service');
     assert.ok(this.$(testSelector('error', 'Purchase failed')).length, 'user sees error message');
   });
 });

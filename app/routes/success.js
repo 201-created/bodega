@@ -17,7 +17,8 @@ function fakeRecord(store) {
   let item = store.peekRecord('item', '1');
   return store.createRecord('charge', {
     item,
-    price: item.price,
+    price: item.get('price') * 5,
+    description: '201 Created Sticker: Seat (2x), Touch, Space (3x)',
     id: '12345',
     token: '12345ABCDE',
 

@@ -1,0 +1,21 @@
+.modal {
+  display: block;
+}
+
+.modal-content {
+  overflow: hidden;
+}
+
+.modal-title {
+  font-size: $font-size-h3;
+}
+
+.modal-body {
+  h2 {
+    font-size: $font-size-h5;
+  }
+
+  dl {
+    border-top: 1px solid $mcolor-grey-300;
+  }
+}
