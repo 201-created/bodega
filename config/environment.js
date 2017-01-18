@@ -33,6 +33,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    // Fastboot doesn't work locally with SSL so use this non-ssl URL
+    // and follow instructions in bodega-backend README to run in non-SSL mode.
+    // If you want to test Apple Pay, you must use SSL, so use `ember serve` instead of `ember fastboot`
+    // ENV.apiHost = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
