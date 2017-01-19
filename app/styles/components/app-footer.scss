@@ -14,7 +14,7 @@
     min-height: $spacer-y * 4;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(sm) {
     height: auto;
     max-height: 100%;
     overflow-y: scroll;

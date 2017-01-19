@@ -3,13 +3,13 @@
     <h1 class='navbar-brand mx-1'>Shop <span class='sr-only'>201</span> {{svg-logo logoVariant='badge' class='d-inline-block align-middle'}}</h1>
   </header>
 
-  <div class='d-flex flex-column flex-md-row col no-gutters p-0'>
+  <div class='d-flex flex-column flex-sm-row col no-gutters p-0'>
     <main class='app-body d-flex flex-column col'>
       {{outlet}}
       <a class='colophon' href="https://www.201-created.com/"><span class='sr-only'>201 Created</span>{{svg-logo}}</a>
     </main>
 
-    <footer class='app-footer d-flex flex-column col col-md-4 col-lg-3 {{unless cart.order.lineItems 'is-empty'}}'>
+    <footer class='app-footer d-flex flex-column col col-sm-5 col-md-4 col-lg-3 {{unless cart.order.lineItems 'is-empty'}}'>
       {{bodega-cart class='col p-1'
                     order=cart.order
                     increment=(action 'increment')
