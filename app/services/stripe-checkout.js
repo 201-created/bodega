@@ -8,7 +8,7 @@ export default Service.extend({
     if (StripeCheckout) {
       return StripeCheckout.configure({
         key: config.stripe.publishableKey,
-        image: '/assets/images/favicon-196x196.png',
+        image: '/assets/images/icons/stripe-checkout-logo.png',
         locale: 'auto',
         shippingAddress: true,
         billingAddress: true,
