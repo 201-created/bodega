@@ -3,6 +3,12 @@
 ## Task Tracking
  * [Trello Board](https://trello.com/b/A0j0rS2a/mobile-web-app-ecommerce-demo)
  
+## Deployment
+
+This app is deployed via Heroku automatically when new code is pushed to master.
+
+The Heroku app is [here](https://dashboard.heroku.com/apps/shop-201).
+ 
 ## Installation
 
 * `git clone <repository-url>` this repository
@@ -16,10 +22,6 @@
 * `ember serve`
 * Visit your app **using Safari** at [https://localhost.ssl:4200](https://localhost.ssl:4200).
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
 ### Running Tests
 
 * `ember test`
@@ -29,5 +31,3 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 * `ember build` (development)
 * `ember build --environment production` (production)
-
-### Deploying
