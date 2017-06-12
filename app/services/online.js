@@ -1,24 +1,32 @@
 import Ember from 'ember';
 
-export default Ember.Service.extend({
-  isOnline: window.navigator ? window.navigator.onLine : true,
+let Service;
 
-  init() {
-    this._super(...arguments);
-    this._online = () => {
-      console.log('_online');
-      Ember.run(this, 'set', 'isOnline', true);
-    };
-    this._offline = () => {
-      console.log('_offline');
-      Ember.run(this, 'set', 'isOnline', false);
-    };
-    window.addEventListener('online', this._online);
-    window.addEventListener('offline', this._offline);
-  },
+if (typeof Fastboot !== 'undefined') {
+  Service = Ember.Service.extend({
+    isOnline: false
+  });
+} else {
+  Service = Ember.Service.extend({
+    isOnline: window.navigator ? window.navigator.onLine : true,
 
-  willDestroy() {
-    window.removeEventListener('online', this._online);
-    window.removeEventListener('offline', this._offline);
-  }
-});
+    init() {
+      this._super(...arguments);
+      this._online = () => {
+        Ember.run(this, 'set', 'isOnline', true);
+      };
+      this._offline = () => {
+        Ember.run(this, 'set', 'isOnline', false);
+      };
+      window.addEventListener('online', this._online);
+      window.addEventListener('offline', this._offline);
+    },
+
+    willDestroy() {
+      window.removeEventListener('online', this._online);
+      window.removeEventListener('offline', this._offline);
+    }
+  });
+}
+
+export default Service;

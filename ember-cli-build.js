@@ -1,11 +1,26 @@
-/*jshint node:true*/
-/* global require, module, process */
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+/* eslint-env node */
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const map = require('broccoli-stew').map;
+const Funnel = require('broccoli-funnel');
+const MergeTrees = require('broccoli-merge-trees');
 
 module.exports = function(defaults) {
+  var browserVendorLib = new Funnel('bower_components/flickity/dist/', {
+    destDir: 'flickity',
+    include: ['flickity.pkgd.js']
+  });
+
+  browserVendorLib = map(browserVendorLib, (content) => {
+    return `if (typeof FastBoot === 'undefined') { ${content} }`;
+  });
+
   var app = new EmberApp(defaults, {
     fingerprint: {
+      generateAssetMap: true,
       exclude: ['images']
+    },
+    trees: {
+      vendor: browserVendorLib
     }
   });
 
@@ -21,9 +36,7 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-  if (process.env.EMBER_CLI_FASTBOOT !== 'true') {
-     app.import('bower_components/flickity/dist/flickity.pkgd.js');
-   }
+  app.import('vendor/flickity/flickity.pkgd.js');
 
-  return app.toTree();
+  return new MergeTrees([app.toTree(), browserVendorLib]);
 };

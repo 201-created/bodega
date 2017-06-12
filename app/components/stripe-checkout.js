@@ -10,10 +10,12 @@ export default Component.extend({
   online: inject.service(),
 
   errorMessage: computed.alias('status.errorMessage'),
-  isDisabled: computed.not('online.isOnline'),
+  isDisabled: computed('online.isOnline', 'disabled', function() {
+    return !this.get('online.isOnline') || this.get('disabled');
+  }),
 
-  title: computed('isDisabled', function() {
-    return this.get('isDisabled') ?
+  title: computed('online.isOnline', function() {
+    return !this.get('online.isOnline') ?
       'Checkout is not available when you are offline' :
       'Pay with Credit Card';
   }),
