@@ -21,6 +21,13 @@ module.exports = function(defaults) {
     },
     trees: {
       vendor: browserVendorLib
+    },
+    'esw-cache-first': {
+      patterns: [
+        '/',
+        '/assets/.*'
+      ],
+      version: 1
     }
   });
 
