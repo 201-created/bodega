@@ -24,10 +24,9 @@ module.exports = function(defaults) {
     },
     'esw-cache-first': {
       patterns: [
-        '/',
-        '/assets/.*'
+        '/'
       ],
-      version: 1
+      version: 2
     }
   });
 
