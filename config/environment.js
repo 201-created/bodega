@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-env node */
 
 module.exports = function(environment) {
   var ENV = {
@@ -18,7 +18,8 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    apiHost: 'https://localhost.ssl:3000',
+    // apiHost: 'https://localhost.ssl:3000',
+    apiHost: 'https://api.shop-201.com',
     wwwHost: '',
     apiNamespace: 'api',
     stripe: {

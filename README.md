@@ -2,13 +2,13 @@
 
 ## Task Tracking
  * [Trello Board](https://trello.com/b/A0j0rS2a/mobile-web-app-ecommerce-demo)
- 
+
 ## Deployment
 
 This app is deployed via Heroku automatically when new code is pushed to master.
 
 The Heroku app is [here](https://dashboard.heroku.com/apps/shop-201).
- 
+
 ## Installation
 
 * `git clone <repository-url>` this repository
