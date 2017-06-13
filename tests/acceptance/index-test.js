@@ -1,6 +1,6 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'bodega/tests/helpers/module-for-acceptance';
-import testSelector from 'bodega/tests/helpers/ember-test-selectors';
+import testSelector from 'ember-test-selectors';
 
 moduleForAcceptance('Acceptance | index');
 

@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import testSelector from 'bodega/tests/helpers/ember-test-selectors';
+import testSelector from 'ember-test-selectors';
 
 moduleForComponent('item-details', 'Integration | Component | item details', {
   integration: true

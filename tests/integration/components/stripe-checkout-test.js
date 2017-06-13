@@ -3,7 +3,7 @@ import hbs from 'htmlbars-inline-precompile';
 import FakeStripeCheckout from 'bodega/tests/fakes/stripe-checkout';
 import FakeRouter from 'bodega/tests/fakes/router';
 import startMirage from 'bodega/tests/helpers/setup-mirage-for-integration';
-import testSelector from 'bodega/tests/helpers/ember-test-selectors';
+import testSelector from 'ember-test-selectors';
 import wait from 'ember-test-helpers/wait';
 
 moduleForComponent('stripe-checkout', 'Integration | Component | stripe checkout', {

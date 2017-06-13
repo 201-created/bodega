@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import testSelector from 'bodega/tests/helpers/ember-test-selectors';
+import testSelector from 'ember-test-selectors';
 import startMirage from 'bodega/tests/helpers/setup-mirage-for-integration';
 import wait from 'ember-test-helpers/wait';
 import FakeApplePay from 'bodega/tests/fakes/apple-pay';

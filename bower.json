@@ -4,6 +4,6 @@
   },
   "devDependencies": {
     "bootstrap": "v4.0.0-alpha.6",
-    "flickity": "^2.0.5"
+    "flickity": "^2.0.8"
   }
 }

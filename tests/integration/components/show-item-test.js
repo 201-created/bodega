@@ -1,6 +1,6 @@
 import { moduleForComponent, test, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import testSelector from 'bodega/tests/helpers/ember-test-selectors';
+import testSelector from 'ember-test-selectors';
 import { smsHref } from 'bodega/components/show-item';
 
 moduleForComponent('show-item', 'Integration | Component | show item', {
