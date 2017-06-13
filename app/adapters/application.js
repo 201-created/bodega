@@ -1,7 +1,7 @@
-import DS from 'ember-data';
 import config from 'bodega/config/environment';
+import JSONAPIAdapter from 'ember-data/adapters/json-api';
 
-export default DS.JSONAPIAdapter.extend({
+export default JSONAPIAdapter.extend({
   namespace: config.apiNamespace,
   host: config.apiHost,
 
