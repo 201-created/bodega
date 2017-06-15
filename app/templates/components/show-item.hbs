@@ -5,7 +5,7 @@
   <h1 class='sr-only'>{{item.name}}</h1>
 
   {{#unless isFastboot}}
-    <div class='show-item__image' style='background-image: url({{item.url}});'>
+    <div class='show-item__image' style={{{concat 'background-image: url(' item.url ');'}}}>
       <img src={{item.url}} class='d-none'>
     </div>
 
