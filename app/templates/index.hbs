@@ -1,15 +1,8 @@
 {{#items-slider class='items-slider col p-0'}}
   {{#if isFastboot}}
-    <article class="show-item h-100"
-              data-test-item={{item.id}}
-              data-item-id={{item.id}}>
-
-      <div class='show-item__image' style={{{concat 'background-image: url(' item.url ');'}}}>
-        <h5 class="loading">just a sec...</h5>
-      </div>
-
+    {{! loading ui }}
+    <article class="show-item h-100">
       <button class='show-item__add-to-cart btn btn-large btn-success' data-test-add-to-cart>&nbsp;</button>
-
     </article>
   {{else}}
     {{#each model as |item|}}
