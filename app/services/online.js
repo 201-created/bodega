@@ -1,32 +1,40 @@
-import Ember from 'ember';
+import Service from 'ember-service';
+import computed from 'ember-computed';
+import injectService from 'ember-service/inject'
+import run from 'ember-runloop';
 
-let Service;
+export default Service.extend({
+  fastboot: injectService(),
+  isFastboot: computed.readOnly('fastboot.isFastBoot'),
+  init() {
+    this._super(...arguments);
 
-if (typeof Fastboot !== 'undefined') {
-  Service = Ember.Service.extend({
-    isOnline: false
-  });
-} else {
-  Service = Ember.Service.extend({
-    isOnline: window.navigator ? window.navigator.onLine : true,
+    let isOnline = (
+      this.get('isFastboot') ?
+      false :
+      (
+        window.navigator ? window.navigator.onLine : true
+      )
+    );
 
-    init() {
-      this._super(...arguments);
+    this.set('isOnline', isOnline);
+
+    if (!this.get('isFastboot')) {
       this._online = () => {
-        Ember.run(this, 'set', 'isOnline', true);
+        run(this, 'set', 'isOnline', true);
       };
       this._offline = () => {
-        Ember.run(this, 'set', 'isOnline', false);
+        run(this, 'set', 'isOnline', false);
       };
       window.addEventListener('online', this._online);
       window.addEventListener('offline', this._offline);
-    },
+    }
+  },
 
-    willDestroy() {
+  willDestroy() {
+    if (!this.get('isFastboot')) {
       window.removeEventListener('online', this._online);
       window.removeEventListener('offline', this._offline);
     }
-  });
-}
-
-export default Service;
+  }
+});
