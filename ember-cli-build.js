@@ -21,6 +21,12 @@ module.exports = function(defaults) {
     },
     trees: {
       vendor: browserVendorLib
+    },
+    'esw-cache-fallback': {
+      patterns: [
+        '/'
+      ],
+      version: '1'
     }
   });
 
