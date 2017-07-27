@@ -77,12 +77,16 @@ export default Component.extend({
       this.set('errorMessage', null);
 
       let tokenCallback = this._saveCharge.bind(this);
-      this.handler = this.get('stripeCheckout').createHandler(tokenCallback);
-
-      this.handler.open({
-        name: '201 Created, Inc',
-        description: '201 Created Sticker',
-        amount: this.get('item.price')
+      this.get('stripeCheckout').createHandler(tokenCallback).then(handler => {
+        this.handler = handler;
+        this.handler.open({
+          name: '201 Created, Inc',
+          description: '201 Created Sticker',
+          amount: this.get('item.price')
+        });
+      }).catch(e => {
+        self.alert(`There was an error beginning the checkout process: ${e.message}`);
+        throw e;
       });
     }
   }
