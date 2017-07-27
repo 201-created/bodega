@@ -1,15 +1,19 @@
 /* eslint-env node */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'bodega',
-    environment: environment,
+    environment,
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        Date: false
       }
     },
 

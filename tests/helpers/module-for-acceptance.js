@@ -4,7 +4,7 @@ import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
 import getServer from 'bodega/mirage/get-server';
 
-const { RSVP: { Promise } } = Ember;
+const { RSVP: { resolve } } = Ember;
 
 export default function(name, options = {}) {
   module(name, {
@@ -22,7 +22,7 @@ export default function(name, options = {}) {
     afterEach() {
       let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
       this.server.shutdown();
-      return Promise.resolve(afterEach).then(() => destroyApp(this.application));
+      return resolve(afterEach).then(() => destroyApp(this.application));
     }
   });
 }
