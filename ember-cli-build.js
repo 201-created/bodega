@@ -15,6 +15,10 @@ module.exports = function(defaults) {
   });
 
   var app = new EmberApp(defaults, {
+    minifyHTML: {
+      enabled: true,
+      htmlFiles: ['index.html']
+    },
     fingerprint: {
       generateAssetMap: true,
       exclude: ['images']
@@ -27,6 +31,9 @@ module.exports = function(defaults) {
         '/'
       ],
       version: '1'
+    },
+    'ember-service-worker': {
+      registrationStrategy: 'async'
     }
   });
 
