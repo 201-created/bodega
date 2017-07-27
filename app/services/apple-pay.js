@@ -1,11 +1,10 @@
 /* global Stripe, ApplePaySession*/
 import Ember from 'ember';
-import loadScript from 'bodega/utils/load-script';
 const { Service, RSVP } = Ember;
 
 export default Service.extend({
   isAvailable: Ember.computed(function() {
-    return self.location.protocol === 'https:' && self.ApplePaySession && self.ApplePaySession.canMakePayments();
+    return self.location && self.location.protocol === 'https:' && self.ApplePaySession && self.ApplePaySession.canMakePayments();
   }),
 
   revokeAvailability() {
@@ -15,18 +14,16 @@ export default Service.extend({
   init() {
     this._super(...arguments);
     if (this.get('isAvailable')) {
-      loadScript('https://js.stripe.com/v2/').then(() => {
-        if (!self.Stripe.applePay) {
-          this.revokeAvailability();
+      if (!self.Stripe.applePay) {
+        this.revokeAvailability();
+      }
+      Stripe.applePay.checkAvailability((result) => {
+        if (this.isDestroyed) { return }
+        if (!result) {
+          Ember.run(() => {
+            this.revokeAvailability();
+          });
         }
-        Stripe.applePay.checkAvailability((result) => {
-          if (this.isDestroyed) { return }
-          if (!result) {
-            Ember.run(() => {
-              this.revokeAvailability();
-            });
-          }
-        });
       });
     }
   },
