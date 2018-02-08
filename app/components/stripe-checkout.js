@@ -77,6 +77,7 @@ export default Component.extend({
       this.set('errorMessage', null);
 
       let tokenCallback = this._saveCharge.bind(this);
+
       this.get('stripeCheckout').createHandler(tokenCallback).then(handler => {
         this.handler = handler;
         this.handler.open({

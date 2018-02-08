@@ -1,6 +1,6 @@
+import { find } from 'ember-native-dom-helpers';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import testSelector from 'ember-test-selectors';
 
 moduleForComponent('item-details', 'Integration | Component | item details', {
   integration: true
@@ -15,6 +15,6 @@ test('it renders', function(assert) {
   this.set('item', item);
   this.render(hbs`{{item-details item=item}}`);
 
-  assert.ok(this.$(testSelector('name', item.name)).length, 'displays name');
-  assert.ok(this.$(testSelector('price', item.price / 100)).length, 'displays price');
+  assert.ok(find(`[data-test-name="${item.name}"]`), 'displays name');
+  assert.ok(find(`[data-test-price="${item.price / 100}"]`), 'displays price');
 });
