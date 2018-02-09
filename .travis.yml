@@ -5,8 +5,12 @@ node_js:
 
 sudo: required
 
+env:
+  - MOZ_HEADLESS=1
+
 addons:
   chrome: stable
+  firefox: latest
 
 cache:
   directories:
