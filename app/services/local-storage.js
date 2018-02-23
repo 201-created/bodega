@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Service from '@ember/service';
 
-export default Ember.Service.extend({
+export default Service.extend({
   unknownProperty(key) {
     if (window.localStorage && window.localStorage.getItem) {
       return window.localStorage.getItem(key);

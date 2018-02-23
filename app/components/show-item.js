@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { htmlSafe } from '@ember/string';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import config from 'bodega/config/environment';
-const { Component, computed, inject } = Ember;
-const { htmlSafe } = Ember.String;
 
 export function smsHref(id){
   let url = `${config.wwwHost}/item/${id}`;
@@ -9,7 +10,7 @@ export function smsHref(id){
 }
 
 export default Component.extend({
-  cart: inject.service(),
+  cart: service(),
 
   smsHref: computed('item.id', function() {
     let id = this.get('item.id');

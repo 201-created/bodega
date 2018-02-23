@@ -1,9 +1,12 @@
 /* global Stripe, ApplePaySession*/
-import Ember from 'ember';
-const { Service, RSVP } = Ember;
+import { run } from '@ember/runloop';
+
+import { computed } from '@ember/object';
+import Service from '@ember/service';
+import RSVP from 'rsvp';
 
 export default Service.extend({
-  isAvailable: Ember.computed(function() {
+  isAvailable: computed(function() {
     return self.location && self.location.protocol === 'https:' && self.ApplePaySession && self.ApplePaySession.canMakePayments();
   }),
 
@@ -20,7 +23,7 @@ export default Service.extend({
       Stripe.applePay.checkAvailability((result) => {
         if (this.isDestroyed) { return }
         if (!result) {
-          Ember.run(() => {
+          run(() => {
             this.revokeAvailability();
           });
         }

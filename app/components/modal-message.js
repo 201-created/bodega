@@ -1,18 +1,22 @@
-import Ember from 'ember';
-const { Component, computed, inject, isPresent, run } = Ember;
+import { inject as service } from '@ember/service';
+import { alias } from '@ember/object/computed';
+import Component from '@ember/component';
+import { computed, observer } from '@ember/object';
+import { isPresent } from '@ember/utils';
+import { run } from '@ember/runloop';
 
 export default Component.extend({
-  status: inject.service(),
+  status: service(),
 
   _transitionDuration: 150,
 
   showModalOnInit: false,
-  errorMessage: computed.alias('status.errorMessage'),
+  errorMessage: alias('status.errorMessage'),
   activateModal: computed('errorMessage', 'showModalOnInit', function() {
     return this.get('showModalOnInit') || isPresent(this.get('errorMessage'));
   }),
 
-  messageDidActivate: Ember.observer('activateModal', function() {
+  messageDidActivate: observer('activateModal', function() {
     if (this.get('activateModal')) {
       this.send('showModal');
     }

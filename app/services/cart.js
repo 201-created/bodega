@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import { reads } from '@ember/object/computed';
+import Service, { inject as service } from '@ember/service';
+import { get, observer } from '@ember/object';
 import Order from 'bodega/utils/order';
-const { Service, computed, observer, get, inject } = Ember;
 
 export default Service.extend({
-  localStorage: inject.service(),
+  localStorage: service(),
 
   init() {
     this._super(...arguments);
@@ -13,10 +14,10 @@ export default Service.extend({
     this.set('order', new Order(orderData));
   },
 
-  quantity: computed.reads('order.quantity'),
-  lineItems: computed.reads('order.lineItems'),
-  price: computed.reads('order.price'),
-  name: computed.reads('order.name'),
+  quantity: reads('order.quantity'),
+  lineItems: reads('order.lineItems'),
+  price: reads('order.price'),
+  name: reads('order.name'),
 
   addItem(item) {
     this.set('order', this.order.addItem({

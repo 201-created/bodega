@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
 // For testing visit /success/test
-export default Ember.Route.extend({
+export default Route.extend({
   model(params) {
     if(params.id === 'test') {
       return fakeRecord(this.store);

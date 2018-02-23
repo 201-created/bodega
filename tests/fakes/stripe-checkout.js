@@ -1,5 +1,6 @@
-import Ember from 'ember';
-const { RSVP, Service, Object: emberObject } = Ember;
+import RSVP from 'rsvp';
+import Service from '@ember/service';
+import emberObject from '@ember/object';
 
 export default Service.extend({
   createHandler(cb) {

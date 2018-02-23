@@ -1,15 +1,18 @@
-import Ember from 'ember';
-const { assign, Component, computed, get, inject } = Ember;
+import { inject as service } from '@ember/service';
+import { alias } from '@ember/object/computed';
+import { assign } from '@ember/polyfills';
+import Component from '@ember/component';
+import { get, computed } from '@ember/object';
 
 export default Component.extend({
-  store: inject.service(),
-  router: inject.service(),
-  stripeCheckout: inject.service(),
-  cart: inject.service(),
-  status: inject.service(),
-  online: inject.service(),
+  store: service(),
+  router: service(),
+  stripeCheckout: service(),
+  cart: service(),
+  status: service(),
+  online: service(),
 
-  errorMessage: computed.alias('status.errorMessage'),
+  errorMessage: alias('status.errorMessage'),
   isDisabled: computed('online.isOnline', 'disabled', function() {
     return !this.get('online.isOnline') || this.get('disabled');
   }),

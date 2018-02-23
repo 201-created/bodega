@@ -1,5 +1,6 @@
-import Ember from 'ember';
-const { Component, computed } = Ember;
+import { equal } from '@ember/object/computed';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   logoVariant: 'horizontal', // Also 'vertical' or 'badge'
@@ -17,7 +18,7 @@ export default Component.extend({
     }
   }),
 
-  isHorizontal: computed.equal('logoVariant', 'horizontal'),
-  isVertical: computed.equal('logoVariant', 'vertical'),
-  isBadge: computed.equal('logoVariant', 'badge')
+  isHorizontal: equal('logoVariant', 'horizontal'),
+  isVertical: equal('logoVariant', 'vertical'),
+  isBadge: equal('logoVariant', 'badge')
 });

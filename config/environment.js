@@ -54,9 +54,15 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
     ENV.stripe.publishableKey = 'pk_test_SrD06JdAhT0DZvBEK8SZ9aiB';
     ENV.apiHost = '';
     ENV.animationDuration = 0;
+
+    ENV['ember-cli-mirage'] = {
+      autostart: true
+    };
+
   }
 
   if (environment === 'production') {

@@ -1,6 +1,7 @@
 import config from 'bodega/config/environment';
 
 export default function() {
+  this.autostart = true;
   this.namespace = `/${config.apiNamespace}`;
   this.get('/items');
 

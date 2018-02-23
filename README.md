@@ -7,7 +7,8 @@
 
 This app is deployed via Heroku automatically when new code is pushed to master.
 
-The Heroku app is [here](https://dashboard.heroku.com/apps/shop-201).
+The production Heroku app is [here](https://dashboard.heroku.com/apps/shop-201). There is also a [staging app](https://dashboard.heroku.com/apps/shop-201-staging).
+
 
 ## Installation
 

@@ -6,9 +6,11 @@
  *   https://github.com/code-corps/ember-stripe-service
  */
 
+import EmberError from '@ember/error';
+
 import Ember from 'ember';
 import config from '../config/environment';
-import StripeMock from '../services/stripe-mock';
+import StripeMock from 'ember-stripe-service/utils/stripe-mock';
 
 export function initialize() {
   const application = arguments[1] || arguments[0];
@@ -20,7 +22,7 @@ export function initialize() {
   }
 
   if (!config.stripe.publishableKey) {
-    throw new Ember.Error('StripeService: Missing Stripe key, please set `ENV.stripe.publishableKey` in config.environment.js');
+    throw new EmberError('StripeService: Missing Stripe key, please set `ENV.stripe.publishableKey` in config.environment.js');
   }
 
   if (typeof FastBoot !== 'undefined' || typeof Stripe === 'undefined') {

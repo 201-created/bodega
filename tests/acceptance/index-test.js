@@ -1,14 +1,18 @@
-import { findAll, visit } from 'ember-native-dom-helpers';
-import { test } from 'qunit';
-import moduleForAcceptance from 'bodega/tests/helpers/module-for-acceptance';
+import { find, visit, currentURL } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 
-moduleForAcceptance('Acceptance | index');
+module('Acceptance | index', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /index', async function(assert) {
-  let items = this.server.createList('item', 5);
-  await visit('/');
+  test('visiting /index', async function(assert) {
+    let items = this.server.createList('item', 5);
+    await visit('/');
 
-  items.forEach(i => {
-    assert.ok(findAll(`[data-test-item="${i.id}"]`).length, `has item id ${i.id}`);
+    assert.equal(currentURL(), '/');
+
+    items.forEach(i => {
+      assert.ok(find(`[data-test-item="${i.id}"]`), `has item id ${i.id}`);
+    });
   });
 });

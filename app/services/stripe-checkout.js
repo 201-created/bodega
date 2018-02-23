@@ -1,8 +1,8 @@
 /* global StripeCheckout */
-import Ember from 'ember';
+import Service from '@ember/service';
+
 import config from 'bodega/config/environment';
 import loadScript from 'bodega/utils/load-script';
-const { Service } = Ember;
 
 export default Service.extend({
   createHandler(tokenCallback) {

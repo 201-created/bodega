@@ -1,10 +1,11 @@
-import Ember from 'ember';
-const { Component, computed, inject } = Ember;
+import { inject as service } from '@ember/service';
+import { readOnly } from '@ember/object/computed';
+import Component from '@ember/component';
 
 export default Component.extend({
-  applePay: inject.service(),
+  applePay: service(),
 
-  applePayIsAvailable: computed.readOnly('applePay.isAvailable'),
+  applePayIsAvailable: readOnly('applePay.isAvailable'),
 
   // Expected actions
   increment() {throw new Error('need to pass `increment` to bodega-cart')},

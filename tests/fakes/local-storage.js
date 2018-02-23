@@ -1,4 +1,3 @@
-import Ember from 'ember';
-const { Service } = Ember;
+import Service from '@ember/service';
 
 export default Service.extend();

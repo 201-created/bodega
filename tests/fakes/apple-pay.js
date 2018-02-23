@@ -1,5 +1,5 @@
-import Ember from 'ember';
-const { Service, RSVP } = Ember;
+import Service from '@ember/service';
+import RSVP from 'rsvp';
 
 export default Service.extend({
   isAvailable: true,
